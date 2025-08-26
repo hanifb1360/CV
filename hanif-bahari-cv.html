@@ -355,11 +355,7 @@
       .sidebar-content a {
         text-underline-offset: 2px;
       }
-      .profile,
-      .experience,
-      .skills-main {
-        outline: none;
-      }
+      
       /* Visually hidden utility for screen readers */
       .sr-only {
         position: absolute;
@@ -371,6 +367,11 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
       }
+
+      .section-block {
+  outline: none;
+  font-family: var(--font-text);
+}
 
       /* -------------------
          RESPONSIVE
@@ -483,7 +484,7 @@
               Web Designer
             </div>
           </div>
-          <div class="profile" id="profileSection">
+          <div class="profile section-block" id="profileSection">
             <div class="section-title">Summary</div>
             <div>
               I am a Fullstack Web Developer and Web Designer with expertise in
@@ -497,11 +498,11 @@
               robust and aesthetically refined.
             </div>
           </div>
-          <div class="experience" id="experienceSection">
+          <div class="experience section-block" id="experienceSection">
             <div class="section-title">Experience</div>
             <div id="expList-en"></div>
           </div>
-          <div class="profile visible" id="educationSection">
+          <div class="profile section-block visible" id="educationSection">
             <div class="section-title">Education</div>
             <div>
               <div>
@@ -521,7 +522,7 @@
             </div>
           </div>
           <div
-            class="profile"
+            class="profile section-block"
             style="margin-bottom: 24px"
             id="certificationSection"
           >
@@ -546,7 +547,7 @@
               Webbdesigner
             </div>
           </div>
-          <div class="profile" id="profileSection-sv">
+          <div class="profile section-block" id="profileSection-sv">
             <div class="section-title">Sammanfattning</div>
             <div>
               Jag är en fullstack webbutvecklare och webbdesigner med expertis
@@ -560,11 +561,11 @@
               som är både tekniskt robusta och estetiskt förfinade.
             </div>
           </div>
-          <div class="experience" id="experienceSection-sv">
+          <div class="experience section-block" id="experienceSection-sv">
             <div class="section-title">Erfarenhet</div>
             <div id="expList-sv"></div>
           </div>
-          <div class="profile visible" id="educationSection-sv">
+          <div class="profile section-block visible" id="educationSection-sv">
             <div class="section-title">Utbildning</div>
             <div>
               <div>
@@ -583,7 +584,7 @@
             </div>
           </div>
           <div
-            class="profile"
+            class="profile section-block"
             style="margin-bottom: 24px"
             id="certificationSection-sv"
           >
