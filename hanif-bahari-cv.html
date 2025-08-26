@@ -347,7 +347,7 @@
           class="profile-img"
         />
         <div class="sidebar-section">
-          <div class="sidebar-title">Contact</div>
+          <div class="sidebar-title" id="sidebar-contact-title">Contact</div>
           <div class="sidebar-content">
             <div>
               <i class="bi bi-telephone" style="margin-right: 8px"></i>076 576
@@ -390,13 +390,13 @@
           </div>
         </div>
         <div class="sidebar-section">
-          <div class="sidebar-title">Skills</div>
+          <div class="sidebar-title" id="sidebar-skills-title">Skills</div>
           <div class="sidebar-content">
             <div class="skill-list" id="skillList"></div>
           </div>
         </div>
         <div class="sidebar-section">
-          <div class="sidebar-title">Languages</div>
+          <div class="sidebar-title" id="sidebar-languages-title">Languages</div>
           <div class="sidebar-content">
             <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
@@ -747,6 +747,18 @@
 
         // Language toggle
         var lang = "en";
+        var sidebarTitles = {
+          en: {
+            contact: "Contact",
+            skills: "Skills",
+            languages: "Languages"
+          },
+          sv: {
+            contact: "Kontakt",
+            skills: "Färdigheter",
+            languages: "Språk"
+          }
+        };
         function setLang(l) {
           document.getElementById("cv-en").style.display =
             l === "en" ? "" : "none";
@@ -755,6 +767,10 @@
           document.getElementById("langToggle").textContent =
             l === "en" ? "SV" : "EN";
           renderExperience(l);
+          // Sidebar section titles
+          document.getElementById("sidebar-contact-title").textContent = sidebarTitles[l].contact;
+          document.getElementById("sidebar-skills-title").textContent = sidebarTitles[l].skills;
+          document.getElementById("sidebar-languages-title").textContent = sidebarTitles[l].languages;
           // Fade-in animation for sections
           if (l === "en") {
             [
