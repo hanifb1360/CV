@@ -107,6 +107,7 @@
         letter-spacing: 0.04em;
         text-shadow: none;
         font-family: var(--font-title);
+        outline: none;
       }
       .sidebar-content {
         font-size: 0.92rem;
@@ -158,6 +159,7 @@
         padding-bottom: 2px;
         text-shadow: 0 1px 0 var(--sidebar-bg);
         font-family: var(--font-title);
+        outline: none;
       }
 
       /* -------------------
@@ -337,6 +339,40 @@
       }
 
       /* -------------------
+         ACCESSIBILITY
+      ------------------- */
+      html {
+        scroll-behavior: smooth;
+      }
+      .sidebar-title,
+      .section-title {
+        outline: none;
+      }
+      .link-button:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+      .sidebar-content a {
+        text-underline-offset: 2px;
+      }
+      .profile,
+      .experience,
+      .skills-main {
+        outline: none;
+      }
+      /* Visually hidden utility for screen readers */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      /* -------------------
          RESPONSIVE
       ------------------- */
       @media (max-width: 900px) {
@@ -363,80 +399,82 @@
   </head>
 
   <body>
+    <a href="#main-content" class="sr-only" tabindex="0">Skip to main content</a>
     <button
       id="modeToggle"
+      aria-label="Toggle light/dark mode"
     >
       Light Mode
     </button>
     <button
       id="langToggle"
+      aria-label="Toggle language"
     >
       SV
     </button>
     <div class="layout">
-      <aside class="sidebar">
+      <aside class="sidebar" aria-label="Sidebar">
         <img
           src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg"
-          alt="Hanif Bahari"
+          alt="Hanif Bahari portrait"
           class="profile-img"
         />
-        <div class="sidebar-section">
-          <div class="sidebar-title" id="sidebar-contact-title">Contact</div>
+        <div class="sidebar-section" aria-labelledby="sidebar-contact-title">
+          <div class="sidebar-title" id="sidebar-contact-title" tabindex="0">Contact</div>
           <div class="sidebar-content">
             <div>
-              <i class="bi bi-telephone contact-icon"></i>076 576
+              <i class="bi bi-telephone contact-icon" aria-hidden="true"></i><span class="sr-only">Phone:</span>076 576
               01 86
             </div>
             <div class="contact-row">
-              <i class="bi bi-envelope contact-icon"></i
-              >hanifbahari@gmail.com
+              <i class="bi bi-envelope contact-icon" aria-hidden="true"></i><span class="sr-only">Email:</span>hanifbahari@gmail.com
             </div>
             <div class="contact-row">
-              <i class="bi bi-geo-alt contact-icon"></i>Imatragatan
+              <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i><span class="sr-only">Address:</span>Imatragatan
               252 Kista, Stockholm
             </div>
             <div class="contact-links">
               <a
                 class="link-button"
                 href="https://www.linkedin.com/in/hanifbahari"
-                aria-label="LinkedIn"
+                aria-label="LinkedIn profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-linkedin" style="font-size: 1.3em"></i
+                ><i class="bi bi-linkedin" style="font-size: 1.3em" aria-hidden="true"></i
               ></a>
               <a
                 class="link-button"
                 href="https://github.com/hanifb1360"
-                aria-label="GitHub"
+                aria-label="GitHub profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-github" style="font-size: 1.3em"></i
+                ><i class="bi bi-github" style="font-size: 1.3em" aria-hidden="true"></i
               ></a>
               <a
                 class="link-button"
                 href="https://www.artstation.com/hanifbahari"
-                aria-label="Artstation"
+                aria-label="Artstation profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-palette" style="font-size: 1.3em"></i
+                ><i class="bi bi-palette" style="font-size: 1.3em" aria-hidden="true"></i
               ></a>
             </div>
           </div>
         </div>
-        <div class="sidebar-section">
-          <div class="sidebar-title" id="sidebar-skills-title">Skills</div>
+        <div class="sidebar-section" aria-labelledby="sidebar-skills-title">
+          <div class="sidebar-title" id="sidebar-skills-title" tabindex="0">Skills</div>
           <div class="sidebar-content">
             <div class="skill-list" id="skillList"></div>
           </div>
         </div>
-        <div class="sidebar-section">
-          <div class="sidebar-title" id="sidebar-languages-title">Languages</div>
+        <div class="sidebar-section" aria-labelledby="sidebar-languages-title">
+          <div class="sidebar-title" id="sidebar-languages-title" tabindex="0">Languages</div>
           <div class="sidebar-content" id="sidebar-languages-content">
             <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
         </div>
       </aside>
-      <main class="main">
+      <main class="main" id="main-content">
         <div id="cv-en">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
