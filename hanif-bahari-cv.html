@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanif Bahari - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Ubuntu', Arial, sans-serif;
+      background: var(--bg, #16171c);
+      margin: 0;
+      color: var(--text, #f8f9fa);
+      min-height: 100vh;
+      letter-spacing: 0.01em;
+      transition: background 0.4s, color 0.4s;
+    }
+    .layout {
+      display: flex;
+      min-height: 100vh;
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--container-bg, #1c1e26);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .sidebar {
+      background: var(--sidebar-bg, #23263a);
+      min-width: 320px;
+      max-width: 320px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      color: var(--sidebar-text, #fff);
+      transition: background 0.4s, color 0.4s;
+      border-right: 2px solid #f7c948;
+    }
+    .profile-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 4px solid #f7c948;
+    }
+    .sidebar-section {
+      padding: 24px 28px;
+      border-bottom: 1px solid #2d3e50;
+    }
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+    .sidebar-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f7c948;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-shadow: none;
+    }
+    .sidebar-content {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #23263a;
+    }
+    .sidebar-content a {
+      color: #f7c948;
+      text-decoration: none;
+      font-weight: 700;
+      background: #fffbe6;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .sidebar-content a:hover {
+      text-decoration: underline;
+      background: #f7c948;
+      color: #23263a;
+    }
+    .main {
+      flex: 1;
+      padding: 40px 48px;
+      background: var(--main-bg, #16171c);
+      color: var(--main-text, #f8f9fa);
+      transition: background 0.4s, color 0.4s;
+    }
+    .header-main {
+      margin-bottom: 24px;
+    }
+    .name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--name-color, #ffe066);
+      margin-bottom: 2px;
+      letter-spacing: 0.03em;
+      transition: color 0.4s;
+      text-shadow: 0 1px 0 #23263a;
+    }
+    .role {
+      font-size: 1.1rem;
+      color: var(--role-color, #f8f9fa);
+      font-weight: 500;
+      margin-bottom: 18px;
+      transition: color 0.4s;
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffe066;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid #ffe066;
+      display: inline-block;
+      padding-bottom: 2px;
+      text-shadow: 0 1px 0 #23263a;
+    }
+    .profile {
+      background: var(--profile-bg, #23263a);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      font-size: 1rem;
+      color: var(--profile-text, #f8f9fa);
+      transition: background 0.4s, color 0.4s;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .profile.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .experience {
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .experience.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .exp-item {
+      margin-bottom: 18px;
+    }
+    .exp-date {
+      font-size: 0.98rem;
+      color: #ffe066;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .exp-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f8f9fa;
+      margin-bottom: 2px;
+    }
+    .exp-company {
+      font-size: 0.98rem;
+      color: #ffe066;
+      margin-bottom: 2px;
+    }
+    .exp-desc {
+      font-size: 0.98rem;
+      color: #f8f9fa;
+      margin-bottom: 2px;
+    }
+    .skills-main {
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .skills-main.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 32px;
+      margin-top: 10px;
+    }
+    .skill-item {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      color: #23263a;
+      font-weight: 700;
+      min-width: 120px;
+      text-shadow: none;
+    }
+    .skill-dots {
+      display: flex;
+      margin-left: 10px;
+      gap: 3px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fffbe6;
+      display: inline-block;
+      transition: background 0.4s;
+      border: 2px solid #f7c948;
+    }
+    .dot.active {
+      background: #f7c948;
+      border-color: #23263a;
+    }
+    @media (max-width: 900px) {
+      .layout {
+        flex-direction: column;
+        max-width: 100vw;
+      }
+      .sidebar {
+        min-width: 100%;
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ffe066;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+      }
+      .main {
+        padding: 18px 6px;
+      }
+    }
+    :root.dark {
+      --bg: #16171c;
+      --container-bg: #1c1e26;
+      --text: #f8f9fa;
+      --sidebar-bg: #23263a;
+      --sidebar-text: #f8f9fa;
+      --main-bg: #16171c;
+      --main-text: #f8f9fa;
+      --name-color: #ffe066;
+      --role-color: #f8f9fa;
+      --profile-bg: #23263a;
+      --profile-text: #f8f9fa;
+    }
+    :root.light {
+      --bg: #f4f4f4;
+      --container-bg: #fff;
+      --text: #23263a;
+      --sidebar-bg: #f0f0f0;
+      --sidebar-text: #23263a;
+      --main-bg: #fff;
+      --main-text: #23263a;
+      --name-color: #23263a;
+      --role-color: #23263a;
+      --profile-bg: #f0f0f0;
+      --profile-text: #23263a;
+    }
+  </style>
+</head>
+
+
+  <body>
+    <button id="modeToggle" style="position:fixed;top:24px;right:24px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:#f7c948;color:#23263a;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">Light Mode</button>
+    <div class="layout">
+      <aside class="sidebar">
+        <img src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg" alt="Hanif Bahari" class="profile-img" />
+        <div class="sidebar-section">
+          <div class="sidebar-title">Contact</div>
+          <div class="sidebar-content">
+            <div>Phone<br><span>076 576 01 86</span></div>
+            <div style="margin-top:10px;">Email<br><span>hanifbahari@gmail.com</span></div>
+            <div style="margin-top:10px;">Address<br><span>Imatragatan 252 Kista, Stockholm</span></div>
+            <div style="margin-top:10px;"><a href="https://www.linkedin.com/in/hanifbahari">LinkedIn Profile</a></div>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Languages</div>
+          <div class="sidebar-content">
+            <span>Persian</span>, <span>English</span>, <span>Swedish</span>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Skills</div>
+          <div class="sidebar-content">
+            <div class="skill-list">
+              <div class="skill-item">JavaScript <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">React JS <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">Redux <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">TypeScript <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">Node.js <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">WordPress <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">PHP <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">Docker <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item">Figma <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <div class="header-main">
+          <div class="name">Hanif Bahari</div>
+          <div class="role">Fullstack MERN Developer</div>
+        </div>
+        <div class="profile" id="profileSection">
+          <div class="section-title">Profile</div>
+          <div>I specialize in web development, with a strong command of React JS, JavaScript, Redux, and TypeScript. My work involves creating dynamic, user-friendly web applications prioritizing functionality and aesthetics. My foundation in design complements my technical skills, allowing me to deliver holistic digital experiences.</div>
+        </div>
+        <div class="experience" id="experienceSection">
+          <div class="section-title">Experience</div>
+          <!-- ...existing experience items... -->
+          <div class="exp-item">
+            <div class="exp-date">2025 Jan - June</div>
+            <div class="exp-role">Fullstack Developer</div>
+            <div class="exp-company">KTH Royal Institute of Technology</div>
+            <div class="exp-desc">Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">2022 - Ongoing</div>
+            <div class="exp-role">Frontend Developer - Core team (Bazarma)</div>
+            <div class="exp-company">Bazarma</div>
+            <div class="exp-desc">Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">2024</div>
+            <div class="exp-role">Web Developer</div>
+            <div class="exp-company">Byn Kommunikationsbyrå AB</div>
+            <div class="exp-desc">Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">2023 - 2024</div>
+            <div class="exp-role">Web Developer</div>
+            <div class="exp-company">Falck & Co</div>
+            <div class="exp-desc">Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">2017 - 2020</div>
+            <div class="exp-role">Indie Game Developer | Creator of Uncle Magnuz</div>
+            <div class="exp-company">Self Employed</div>
+            <div class="exp-desc">Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-date">2018 - 2019</div>
+            <div class="exp-role">User Experience Designer</div>
+            <div class="exp-company">VE AND VILE</div>
+            <div class="exp-desc">UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.</div>
+          </div>
+        </div>
+        <!-- Skills moved to sidebar -->
+        <div class="profile" id="educationSection">
+          <div class="section-title">Education</div>
+          <div>
+            <div>2021 - 2023<br><span>Frontend Development, Nackademin</span></div>
+            <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industrial Design / Design For ALL, Mid Sweden University</span></div>
+            <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industrial Design, Azad University (IAU)</span></div>
+          </div>
+        </div>
+        <div class="profile" style="margin-bottom:24px;" id="certificationSection">
+          <div class="section-title">Certification</div>
+          <div>UX Design: From Concept to Wireframe - University of Michigan<br><a href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635">Certificate Link</a></div>
+        </div>
+      </main>
+    </div>
+    <script>
+      // Elegant fade-in for sections
+      document.addEventListener('DOMContentLoaded', function() {
+        ["profileSection", "experienceSection", "skillsSection", "certificationSection"].forEach(function(id, i) {
+          setTimeout(function() {
+            var el = document.getElementById(id);
+            if (el) el.classList.add('visible');
+          }, 300 + i * 250);
+        });
+        // Animate skill dots
+        document.querySelectorAll('.skill-item').forEach(function(item, idx) {
+          var dots = item.querySelectorAll('.dot');
+          var levels = [5,5,4,3,3,3,2,1,3]; // Example skill levels
+          var level = levels[idx] || 3;
+          for (let i = 0; i < level; i++) {
+            setTimeout(() => dots[i].classList.add('active'), 500 + i*120);
+          }
+        });
+      });
+      // Dark/light mode toggle
+      var mode = 'dark';
+      function setMode(m) {
+        document.documentElement.classList.remove('dark','light');
+        document.documentElement.classList.add(m);
+        document.getElementById('modeToggle').textContent = m === 'dark' ? 'Light Mode' : 'Dark Mode';
+      }
+      setMode('dark');
+      document.getElementById('modeToggle').onclick = function() {
+        mode = mode === 'dark' ? 'light' : 'dark';
+        setMode(mode);
+      };
+    </script>
+  </body>
+</html>
