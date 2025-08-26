@@ -355,7 +355,7 @@
       .sidebar-content a {
         text-underline-offset: 2px;
       }
-      
+
       /* Visually hidden utility for screen readers */
       .sr-only {
         position: absolute;
@@ -369,9 +369,24 @@
       }
 
       .section-block {
-  outline: none;
-  font-family: var(--font-text);
-}
+        outline: none;
+        font-family: var(--font-text);
+      }
+
+      .skip-link:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 8px;
+        padding: 8px 16px;
+        background: var(--accent-color);
+        color: var(--bg);
+        font-size: 1.1rem;
+        border-radius: 8px;
+        z-index: 2000;
+        outline: 2px solid var(--second-accent-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
 
       /* -------------------
          RESPONSIVE
@@ -400,19 +415,17 @@
   </head>
 
   <body>
-    <a href="#main-content" class="sr-only" tabindex="0">Skip to main content</a>
-    <button
-      id="modeToggle"
-      aria-label="Toggle light/dark mode"
+    <a
+      href="#main-content"
+      class="sr-only skip-link"
+      tabindex="0"
+      aria-label="Skip to main content"
+      >Skip to main content</a
     >
+    <button id="modeToggle" aria-label="Toggle light/dark mode">
       Light Mode
     </button>
-    <button
-      id="langToggle"
-      aria-label="Toggle language"
-    >
-      SV
-    </button>
+    <button id="langToggle" aria-label="Toggle language">SV</button>
     <div class="layout">
       <aside class="sidebar" aria-label="Sidebar">
         <img
@@ -421,18 +434,22 @@
           class="profile-img"
         />
         <div class="sidebar-section" aria-labelledby="sidebar-contact-title">
-          <div class="sidebar-title" id="sidebar-contact-title" tabindex="0">Contact</div>
+          <div class="sidebar-title" id="sidebar-contact-title" tabindex="0">
+            Contact
+          </div>
           <div class="sidebar-content">
             <div>
-              <i class="bi bi-telephone contact-icon" aria-hidden="true"></i><span class="sr-only">Phone:</span>076 576
-              01 86
+              <i class="bi bi-telephone contact-icon" aria-hidden="true"></i
+              ><span class="sr-only">Phone:</span>076 576 01 86
             </div>
             <div class="contact-row">
-              <i class="bi bi-envelope contact-icon" aria-hidden="true"></i><span class="sr-only">Email:</span>hanifbahari@gmail.com
+              <i class="bi bi-envelope contact-icon" aria-hidden="true"></i
+              ><span class="sr-only">Email:</span>hanifbahari@gmail.com
             </div>
             <div class="contact-row">
-              <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i><span class="sr-only">Address:</span>Imatragatan
-              252 Kista, Stockholm
+              <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i
+              ><span class="sr-only">Address:</span>Imatragatan 252 Kista,
+              Stockholm
             </div>
             <div class="contact-links">
               <a
@@ -441,7 +458,11 @@
                 aria-label="LinkedIn profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-linkedin" style="font-size: 1.3em" aria-hidden="true"></i
+                ><i
+                  class="bi bi-linkedin"
+                  style="font-size: 1.3em"
+                  aria-hidden="true"
+                ></i
               ></a>
               <a
                 class="link-button"
@@ -449,7 +470,11 @@
                 aria-label="GitHub profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-github" style="font-size: 1.3em" aria-hidden="true"></i
+                ><i
+                  class="bi bi-github"
+                  style="font-size: 1.3em"
+                  aria-hidden="true"
+                ></i
               ></a>
               <a
                 class="link-button"
@@ -457,26 +482,34 @@
                 aria-label="Artstation profile of Hanif Bahari"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><i class="bi bi-palette" style="font-size: 1.3em" aria-hidden="true"></i
+                ><i
+                  class="bi bi-palette"
+                  style="font-size: 1.3em"
+                  aria-hidden="true"
+                ></i
               ></a>
             </div>
           </div>
         </div>
         <div class="sidebar-section" aria-labelledby="sidebar-skills-title">
-          <div class="sidebar-title" id="sidebar-skills-title" tabindex="0">Skills</div>
+          <div class="sidebar-title" id="sidebar-skills-title" tabindex="0">
+            Skills
+          </div>
           <div class="sidebar-content">
             <div class="skill-list" id="skillList"></div>
           </div>
         </div>
         <div class="sidebar-section" aria-labelledby="sidebar-languages-title">
-          <div class="sidebar-title" id="sidebar-languages-title" tabindex="0">Languages</div>
+          <div class="sidebar-title" id="sidebar-languages-title" tabindex="0">
+            Languages
+          </div>
           <div class="sidebar-content" id="sidebar-languages-content">
             <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
         </div>
       </aside>
       <main class="main" id="main-content">
-        <div id="cv-en">
+        <div id="cv-en" role="region" aria-label="English CV">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
             <div class="role">
@@ -484,8 +517,8 @@
               Web Designer
             </div>
           </div>
-          <div class="profile section-block" id="profileSection">
-            <div class="section-title">Summary</div>
+          <section class="profile section-block" id="profileSection" aria-labelledby="profileSection-title" tabindex="-1">
+            <div class="section-title" id="profileSection-title">Summary</div>
             <div>
               I am a Fullstack Web Developer and Web Designer with expertise in
               React, JavaScript, TypeScript, and Node.js. I build dynamic,
@@ -497,7 +530,7 @@
               enables me to create digital experiences that are technically
               robust and aesthetically refined.
             </div>
-          </div>
+          </section>
           <div class="experience section-block" id="experienceSection">
             <div class="section-title">Experience</div>
             <div id="expList-en"></div>
@@ -539,7 +572,7 @@
             </div>
           </div>
         </div>
-        <div id="cv-sv" style="display: none">
+        <div id="cv-sv" style="display: none" role="region" aria-label="Swedish CV">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
             <div class="role">
@@ -583,12 +616,14 @@
               </div>
             </div>
           </div>
-          <div
+          <section
             class="profile section-block"
             style="margin-bottom: 24px"
             id="certificationSection-sv"
+            aria-labelledby="certificationSection-sv-title"
+            tabindex="-1"
           >
-            <div class="section-title">Certifiering</div>
+            <div class="section-title" id="certificationSection-sv-title">Certifiering</div>
             <div>
               UX Design: Från Koncept till Wireframe - University of Michigan<br /><a
                 id="certificate-link-button-sv"
@@ -599,7 +634,7 @@
                 >Certifikat Länk</a
               >
             </div>
-          </div>
+          </section>
         </div>
       </main>
     </div>
@@ -665,19 +700,17 @@
         }
       }
       function animateSkillBars(skillList) {
-        skillList
-          .querySelectorAll(".skill-item")
-          .forEach(function (item, idx) {
-            var bar = item.querySelector(".lightning-bar");
-            var level = parseInt(item.getAttribute("data-level"), 10) || 3;
-            var width = level * 18;
-            bar.style.width = "0px";
-            bar.style.opacity = "1";
-            setTimeout(function () {
-              bar.style.width = width + "px";
-              bar.classList.add("visible");
-            }, 600 + idx * 220);
-          });
+        skillList.querySelectorAll(".skill-item").forEach(function (item, idx) {
+          var bar = item.querySelector(".lightning-bar");
+          var level = parseInt(item.getAttribute("data-level"), 10) || 3;
+          var width = level * 18;
+          bar.style.width = "0px";
+          bar.style.opacity = "1";
+          setTimeout(function () {
+            bar.style.width = width + "px";
+            bar.classList.add("visible");
+          }, 600 + idx * 220);
+        });
       }
 
       // -------------------
@@ -685,77 +718,77 @@
       // -------------------
       var experiences = [
         {
-            dateEn: "2025 Jan - June",
-            roleEn: "Fullstack Developer",
-            companyEn: "KTH Royal Institute of Technology",
-            descEn:
-              "Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.",
-            dateSv: "2025 Jan - Juni",
-            roleSv: "Fullstackutvecklare",
-            companySv: "KTH Kungliga Tekniska Högskolan",
-            descSv:
-              "Utvecklade hybrida Node.js + React-appar med TypeScript, integrerade frontend- och backendfunktioner. Underhöll 30+ Node.js-applikationer i en multi-repo-miljö med fokus på prestanda och skalbarhet. Implementerade i18n i React-appar för att stödja flerspråkiga användargränssnitt för en global publik. Byggde det nya WordPress-temat för KTH-bloggar med egna komponenter och integrerade det med Polopoly CMS och KTH Design System. Bidrog till KTH Public Design System (monorepo) för att säkerställa enhetlig UI över plattformar. Skapade snabba, SEO-vänliga dokumentationssajter för design-systemet med Astro, vilket förbättrade tillgänglighet och utvecklarupplevelse.",
-          },
-          {
-            dateEn: "2022 - Ongoing",
-            roleEn: "Frontend Developer - Core team (Bazarma)",
-            companyEn: "Bazarma",
-            descEn:
-              "Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.",
-            dateSv: "2022 - Pågående",
-            roleSv: "Frontendutvecklare - Core team (Bazarma)",
-            companySv: "Bazarma",
-            descSv:
-              "Refaktorerade äldre React-klasskomponenter till funktionella komponenter för bättre effektivitet och underhåll. Implementerade Redux för konsekvent och tillförlitlig state management. Ledde webbplatsens redesign för förbättrad användarupplevelse och modern design. Utvecklade och förfinade ett sammanhängande designsystem för konsistens och effektiv utveckling. Skrev enhetstester och integrationstester med Jest samt end-to-end-tester med Cypress för att säkerställa kodkvalitet och tillförlitlighet. Integrerade Sentry för realtidsfelspårning och debugging, Google Analytics 4 (GA4) för användarinsikter och Google Tag Manager (GTM) för effektiv tagghantering och marknadsföringsspårning utan kodändringar.",
-          },
-          {
-            dateEn: "2024",
-            roleEn: "Web Developer",
-            companyEn: "Byn Kommunikationsbyrå AB",
-            descEn:
-              "Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.",
-            dateSv: "2024",
-            roleSv: "Webbutvecklare",
-            companySv: "Byn Kommunikationsbyrå AB",
-            descSv:
-              "Övervakade utvecklingsprocessen och samarbetade nära med designers. Skicklig på att lansera webbplatser med FTP-verktyg för smidiga lanseringar. Implementerade SEO-strategier för bättre synlighet och ranking. Implementerade bästa praxis för en säker och högpresterande användarupplevelse.",
-          },
-          {
-            dateEn: "2023 - 2024",
-            roleEn: "Web Developer",
-            companyEn: "Falck & Co",
-            descEn:
-              "Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.",
-            dateSv: "2023 - 2024",
-            roleSv: "Webbutvecklare",
-            companySv: "Falck & Co",
-            descSv:
-              "Behärskade hela WordPress-stacken, inklusive frontend, backend och lansering via FTP-verktyg. Specialiserad på att skapa egna plugins, teman och funktioner i JavaScript och PHP. Erfarenhet av HTML, CSS, JavaScript och PHP för komplett WordPress-utveckling. Stor erfarenhet av att skapa skräddarsydda lösningar för att förbättra webbplatsens funktionalitet och estetik.",
-          },
-          {
-            dateEn: "2017 - 2020",
-            roleEn: "Indie Game Developer | Creator of Uncle Magnuz",
-            companyEn: "Self Employed",
-            descEn:
-              'Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.',
-            dateSv: "2017 - 2020",
-            roleSv: "Indie Spelutvecklare | Skapare av Uncle Magnuz",
-            companySv: "Egenföretagare",
-            descSv:
-              'Konceptualiserade, designade och utvecklade "Uncle Magnuz", ett plattformsspel för iPhone. Skapade hela spelet från idé till lansering på iTunes. Visade skicklighet inom spelutveckling, inklusive programmering och grafik. Skapade och animerade allt material själv. Lanserade spelet på iTunes med positiv feedback.',
-          },
-          {
-            dateEn: "2018 - 2019",
-            roleEn: "User Experience Designer",
-            companyEn: "VE AND VILE",
-            descEn:
-              "UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.",
-            dateSv: "2018 - 2019",
-            roleSv: "UX Designer",
-            companySv: "VE AND VILE",
-            descSv:
-              "UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.",
-          },
+          dateEn: "2025 Jan - June",
+          roleEn: "Fullstack Developer",
+          companyEn: "KTH Royal Institute of Technology",
+          descEn:
+            "Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.",
+          dateSv: "2025 Jan - Juni",
+          roleSv: "Fullstackutvecklare",
+          companySv: "KTH Kungliga Tekniska Högskolan",
+          descSv:
+            "Utvecklade hybrida Node.js + React-appar med TypeScript, integrerade frontend- och backendfunktioner. Underhöll 30+ Node.js-applikationer i en multi-repo-miljö med fokus på prestanda och skalbarhet. Implementerade i18n i React-appar för att stödja flerspråkiga användargränssnitt för en global publik. Byggde det nya WordPress-temat för KTH-bloggar med egna komponenter och integrerade det med Polopoly CMS och KTH Design System. Bidrog till KTH Public Design System (monorepo) för att säkerställa enhetlig UI över plattformar. Skapade snabba, SEO-vänliga dokumentationssajter för design-systemet med Astro, vilket förbättrade tillgänglighet och utvecklarupplevelse.",
+        },
+        {
+          dateEn: "2022 - Ongoing",
+          roleEn: "Frontend Developer - Core team (Bazarma)",
+          companyEn: "Bazarma",
+          descEn:
+            "Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.",
+          dateSv: "2022 - Pågående",
+          roleSv: "Frontendutvecklare - Core team (Bazarma)",
+          companySv: "Bazarma",
+          descSv:
+            "Refaktorerade äldre React-klasskomponenter till funktionella komponenter för bättre effektivitet och underhåll. Implementerade Redux för konsekvent och tillförlitlig state management. Ledde webbplatsens redesign för förbättrad användarupplevelse och modern design. Utvecklade och förfinade ett sammanhängande designsystem för konsistens och effektiv utveckling. Skrev enhetstester och integrationstester med Jest samt end-to-end-tester med Cypress för att säkerställa kodkvalitet och tillförlitlighet. Integrerade Sentry för realtidsfelspårning och debugging, Google Analytics 4 (GA4) för användarinsikter och Google Tag Manager (GTM) för effektiv tagghantering och marknadsföringsspårning utan kodändringar.",
+        },
+        {
+          dateEn: "2024",
+          roleEn: "Web Developer",
+          companyEn: "Byn Kommunikationsbyrå AB",
+          descEn:
+            "Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.",
+          dateSv: "2024",
+          roleSv: "Webbutvecklare",
+          companySv: "Byn Kommunikationsbyrå AB",
+          descSv:
+            "Övervakade utvecklingsprocessen och samarbetade nära med designers. Skicklig på att lansera webbplatser med FTP-verktyg för smidiga lanseringar. Implementerade SEO-strategier för bättre synlighet och ranking. Implementerade bästa praxis för en säker och högpresterande användarupplevelse.",
+        },
+        {
+          dateEn: "2023 - 2024",
+          roleEn: "Web Developer",
+          companyEn: "Falck & Co",
+          descEn:
+            "Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.",
+          dateSv: "2023 - 2024",
+          roleSv: "Webbutvecklare",
+          companySv: "Falck & Co",
+          descSv:
+            "Behärskade hela WordPress-stacken, inklusive frontend, backend och lansering via FTP-verktyg. Specialiserad på att skapa egna plugins, teman och funktioner i JavaScript och PHP. Erfarenhet av HTML, CSS, JavaScript och PHP för komplett WordPress-utveckling. Stor erfarenhet av att skapa skräddarsydda lösningar för att förbättra webbplatsens funktionalitet och estetik.",
+        },
+        {
+          dateEn: "2017 - 2020",
+          roleEn: "Indie Game Developer | Creator of Uncle Magnuz",
+          companyEn: "Self Employed",
+          descEn:
+            'Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.',
+          dateSv: "2017 - 2020",
+          roleSv: "Indie Spelutvecklare | Skapare av Uncle Magnuz",
+          companySv: "Egenföretagare",
+          descSv:
+            'Konceptualiserade, designade och utvecklade "Uncle Magnuz", ett plattformsspel för iPhone. Skapade hela spelet från idé till lansering på iTunes. Visade skicklighet inom spelutveckling, inklusive programmering och grafik. Skapade och animerade allt material själv. Lanserade spelet på iTunes med positiv feedback.',
+        },
+        {
+          dateEn: "2018 - 2019",
+          roleEn: "User Experience Designer",
+          companyEn: "VE AND VILE",
+          descEn:
+            "UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.",
+          dateSv: "2018 - 2019",
+          roleSv: "UX Designer",
+          companySv: "VE AND VILE",
+          descSv:
+            "UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.",
+        },
       ];
       function renderExperience(lang) {
         var expListEn = document.getElementById("expList-en");
@@ -783,23 +816,27 @@
         en: {
           contact: "Contact",
           skills: "Skills",
-          languages: "Languages"
+          languages: "Languages",
         },
         sv: {
           contact: "Kontakt",
           skills: "Färdigheter",
-          languages: "Språk"
-        }
+          languages: "Språk",
+        },
       };
       var sidebarLanguagesContent = {
         en: "<span>Persian</span>, <span>English</span>, <span>Swedish</span>",
-        sv: "<span>Persiska</span>, <span>Engelska</span>, <span>Svenska</span>"
+        sv: "<span>Persiska</span>, <span>Engelska</span>, <span>Svenska</span>",
       };
       function updateSidebar(lang) {
-        document.getElementById("sidebar-contact-title").textContent = sidebarTitles[lang].contact;
-        document.getElementById("sidebar-skills-title").textContent = sidebarTitles[lang].skills;
-        document.getElementById("sidebar-languages-title").textContent = sidebarTitles[lang].languages;
-        document.getElementById("sidebar-languages-content").innerHTML = sidebarLanguagesContent[lang];
+        document.getElementById("sidebar-contact-title").textContent =
+          sidebarTitles[lang].contact;
+        document.getElementById("sidebar-skills-title").textContent =
+          sidebarTitles[lang].skills;
+        document.getElementById("sidebar-languages-title").textContent =
+          sidebarTitles[lang].languages;
+        document.getElementById("sidebar-languages-content").innerHTML =
+          sidebarLanguagesContent[lang];
       }
 
       // -------------------
