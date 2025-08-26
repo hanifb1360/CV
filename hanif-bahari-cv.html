@@ -1,309 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hanif Bahari - CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <style>
-    :root {
-      --font-title: 'Lexend Deca', Arial, sans-serif;
-      --font-text: 'DM Sans', Arial, sans-serif;
-    }
-    body {
-      font-family: var(--font-text);
-      background: var(--bg);
-      margin: 0;
-      color: var(--text);
-      min-height: 100vh;
-      letter-spacing: 0.01em;
-      transition: background 0.4s, color 0.4s;
-    }
-    .layout {
-      display: flex;
-      min-height: 100vh;
-      max-width: 950px;
-      margin: 0 auto;
-      background: var(--container-bg, #1c1e26);
-      overflow: hidden;
-    }
-    .sidebar {
-      background: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      min-width: 320px;
-      max-width: 320px;
-      flex: 0 0 320px;
-      transition: background 0.4s, color 0.4s;
-      border-right: 2px solid var(--accent-color);
-    }
-    .profile-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-bottom: 2px solid var(--accent-color);
-    }
-    .sidebar-section {
-      padding: 24px 28px;
-      border-bottom: 1px solid #2d3e50;
-    }
-    .sidebar-section:last-child {
-      border-bottom: none;
-    }
-    .sidebar-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--name-color);
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
-      text-shadow: none;
-      font-family: var(--font-title);
-    }
-    .sidebar-content {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--sidebar-text);
-      font-family: var(--font-text);
-    }
-
-    .main {
-      flex: 1 1 0%;
-      min-width: 0;
-      padding: 40px 48px;
-      background: var(--main-bg);
-      color: var(--main-text);
-      transition: background 0.4s, color 0.4s;
-      font-family: var(--font-text);
-    }
-    .header-main {
-      margin-bottom: 24px;
-    }
-    .name {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--third-accent-color);
-      margin-bottom: 2px;
-      letter-spacing: 0.03em;
-      transition: color 0.4s;
-      font-family: var(--font-title);
-    }
-    .role {
-      font-size: 1.1rem;
-      color: var(--role-color);
-      font-weight: 500;
-      margin-bottom: 18px;
-      transition: color 0.4s;
-      font-family: var(--font-title);
-    }
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--name-color);
-      margin-bottom: 10px;
-      letter-spacing: 0.04em;
-      border-bottom: 2px solid var(--name-color);
-      display: inline-block;
-      padding-bottom: 2px;
-      text-shadow: 0 1px 0 var(--sidebar-bg);
-      font-family: var(--font-title);
-    }
-    .profile {
-      color: var(--profile-text);
-      transition: background 0.4s, color 0.4s;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s, transform 0.8s;
-      margin-bottom: 60px;
-      font-family: var(--font-text);
-    }
-    .profile.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .experience {
-      margin-bottom: 24px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s, transform 0.8s;
-    }
-    .experience.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .exp-item {
-      margin-bottom: 18px;
-    }
-    .exp-date {
-      font-size: 0.98rem;
-      color: var(--main-text);
-      font-weight: 500;
-      margin-bottom: 2px;
-      font-family: var(--font-text);
-    }
-    .exp-role {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--third-accent-color);
-      margin-bottom: 2px;
-      font-family: var(--font-text);
-    }
-    .exp-company {
-      font-size: 0.98rem;
-      color: var(--main-text);
-      margin-bottom: 2px;
-      font-family: var(--font-text);
-      margin-bottom: 20px;
-    }
-    .exp-desc {
-      font-size: 0.98rem;
-      color: var(--main-text);
-      margin-bottom: 2px;
-      font-family: var(--font-text);
-      margin-bottom: 50px;
-    }
-    .skills-main {
-      margin-bottom: 24px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s, transform 0.8s;
-    }
-    .skills-main.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px 32px;
-      margin-top: 10px;
-    }
-    .skill-item {
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-      color: var(--sidebar-text);
-      font-weight: 700;
-      min-width: 120px;
-      text-shadow: none;
-      font-family: var(--font-text);
-      position: relative;
-    }
-    .skill-lightning {
-      display: flex;
-      align-items: center;
-      margin-left: 14px;
-      width: 100px;
-      height: 12px;
-      position: relative;
-      background: none;
-      overflow: visible;
-    }
-    .lightning-bar {
-      display: block;
-      height: 6px;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--accent-color) 0%, var(--third-accent-color) 100%);
-      transition: width 0.7s cubic-bezier(.77,0,.18,1);
-      z-index: 1;
-      width: 0;
-      opacity: 1;
-    }
-
-    .link-button {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 4px 12px;
-      background: var(--main-text);
-      color: var(--bg);
-      font-weight: 700;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-      font-family: var(--font-text);
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: none;
-      
-    }
-    .link-button:hover {
-      background: var(--accent-color);
-    }
-    #certificate-link-button{
-        margin-top: 40px;
-    }
-    @media (max-width: 900px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hanif Bahari - CV</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      :root {
+        --font-title: "Lexend Deca", Arial, sans-serif;
+        --font-text: "DM Sans", Arial, sans-serif;
+      }
+      body {
+        font-family: var(--font-text);
+        background: var(--bg);
+        margin: 0;
+        color: var(--text);
+        min-height: 100vh;
+        letter-spacing: 0.01em;
+        transition: background 0.4s, color 0.4s;
+      }
       .layout {
-        flex-direction: column;
-        max-width: 100vw;
+        display: flex;
+        min-height: 100vh;
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--container-bg, #1c1e26);
+        overflow: hidden;
       }
       .sidebar {
-        min-width: 100%;
-        max-width: 100%;
-        flex: 1 1 100%;
-        border-right: none;
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        min-width: 320px;
+        max-width: 320px;
+        flex: 0 0 320px;
+        transition: background 0.4s, color 0.4s;
+        border-right: 2px solid var(--accent-color);
+      }
+      .profile-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
         border-bottom: 2px solid var(--accent-color);
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 0;
       }
-      .main {
-        padding: 18px 6px;
+      .sidebar-section {
+        padding: 24px 28px;
+        border-bottom: 1px solid #2d3e50;
       }
-    }
-    :root.dark {
-      --bg: #16171c;
-      --accent-color: #66c9ff; 
-      --second-accent-color: #f7c948; 
-      --third-accent-color: #48f7e3; 
-      --container-bg: #1c1e26;
-      --text: #f8f9fa;
-      --sidebar-bg: #23263a;
-      --sidebar-text: #f8f9fa;
-      --main-bg: #16171c;
-      --main-text: #f8f9fa;
-      --name-color: #66c9ff;
-      --role-color: #f8f9fa;
-      --profile-bg: #23263a;
-      --profile-text: #f8f9fa;
-    }
-    :root.light {
-      --bg: #f4f4f4;
-      --accent-color: #0c5075; 
-      --second-accent-color: #39727d; 
-      --third-accent-color: #15796d; 
-      --container-bg: #fff;
-      --text: #23263a;
-      --sidebar-bg: #f0f0f0;
-      --sidebar-text: #23263a;
-      --main-bg: #fff;
-      --main-text: #23263a;
-      --name-color: #39727d;
-      --role-color: #23263a;
-      --profile-bg: #f0f0f0;
-      --profile-text: #23263a;
-    }
-  </style>
-</head>
+      .sidebar-section:last-child {
+        border-bottom: none;
+      }
+      .sidebar-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--name-color);
+        margin-bottom: 12px;
+        letter-spacing: 0.04em;
+        text-shadow: none;
+        font-family: var(--font-title);
+      }
+      .sidebar-content {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: var(--sidebar-text);
+        font-family: var(--font-text);
+      }
 
+      .main {
+        flex: 1 1 0%;
+        min-width: 0;
+        padding: 40px 48px;
+        background: var(--main-bg);
+        color: var(--main-text);
+        transition: background 0.4s, color 0.4s;
+        font-family: var(--font-text);
+      }
+      .header-main {
+        margin-bottom: 24px;
+      }
+      .name {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--third-accent-color);
+        margin-bottom: 2px;
+        letter-spacing: 0.03em;
+        transition: color 0.4s;
+        font-family: var(--font-title);
+      }
+      .role {
+        font-size: 1.1rem;
+        color: var(--role-color);
+        font-weight: 500;
+        margin-bottom: 18px;
+        transition: color 0.4s;
+        font-family: var(--font-title);
+      }
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--name-color);
+        margin-bottom: 10px;
+        letter-spacing: 0.04em;
+        border-bottom: 2px solid var(--name-color);
+        display: inline-block;
+        padding-bottom: 2px;
+        text-shadow: 0 1px 0 var(--sidebar-bg);
+        font-family: var(--font-title);
+      }
+      .profile {
+        color: var(--profile-text);
+        transition: background 0.4s, color 0.4s;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s, transform 0.8s;
+        margin-bottom: 60px;
+        font-family: var(--font-text);
+      }
+      .profile.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .experience {
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s, transform 0.8s;
+      }
+      .experience.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .exp-item {
+        margin-bottom: 18px;
+      }
+      .exp-date {
+        font-size: 0.98rem;
+        color: var(--main-text);
+        font-weight: 500;
+        margin-bottom: 2px;
+        font-family: var(--font-text);
+      }
+      .exp-role {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--third-accent-color);
+        margin-bottom: 2px;
+        font-family: var(--font-text);
+      }
+      .exp-company {
+        font-size: 0.98rem;
+        color: var(--main-text);
+        margin-bottom: 2px;
+        font-family: var(--font-text);
+        margin-bottom: 20px;
+      }
+      .exp-desc {
+        font-size: 0.98rem;
+        color: var(--main-text);
+        margin-bottom: 2px;
+        font-family: var(--font-text);
+        margin-bottom: 50px;
+      }
+      .skills-main {
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s, transform 0.8s;
+      }
+      .skills-main.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px 32px;
+        margin-top: 10px;
+      }
+      .skill-item {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        color: var(--sidebar-text);
+        font-weight: 700;
+        min-width: 120px;
+        text-shadow: none;
+        font-family: var(--font-text);
+        position: relative;
+      }
+      .skill-lightning {
+        display: flex;
+        align-items: center;
+        margin-left: 14px;
+        width: 100px;
+        height: 12px;
+        position: relative;
+        background: none;
+        overflow: visible;
+      }
+      .lightning-bar {
+        display: block;
+        height: 6px;
+        border-radius: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-color) 0%,
+          var(--third-accent-color) 100%
+        );
+        transition: width 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+        z-index: 1;
+        width: 0;
+        opacity: 1;
+      }
+
+      .link-button {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 4px 12px;
+        background: var(--main-text);
+        color: var(--bg);
+        font-weight: 700;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
+        font-family: var(--font-text);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: none;
+      }
+      .link-button:hover {
+        background: var(--accent-color);
+      }
+      #certificate-link-button {
+        margin-top: 40px;
+      }
+      #certificate-link-button-sv {
+        margin-top: 40px;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          flex-direction: column;
+          max-width: 100vw;
+        }
+        .sidebar {
+          min-width: 100%;
+          max-width: 100%;
+          flex: 1 1 100%;
+          border-right: none;
+          border-bottom: 2px solid var(--accent-color);
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0;
+        }
+        .main {
+          padding: 18px 6px;
+        }
+      }
+      :root.dark {
+        --bg: #16171c;
+        --accent-color: #66c9ff;
+        --second-accent-color: #f7c948;
+        --third-accent-color: #48f7e3;
+        --container-bg: #1c1e26;
+        --text: #f8f9fa;
+        --sidebar-bg: #23263a;
+        --sidebar-text: #f8f9fa;
+        --main-bg: #16171c;
+        --main-text: #f8f9fa;
+        --name-color: #66c9ff;
+        --role-color: #f8f9fa;
+        --profile-bg: #23263a;
+        --profile-text: #f8f9fa;
+      }
+      :root.light {
+        --bg: #f4f4f4;
+        --accent-color: #0c5075;
+        --second-accent-color: #39727d;
+        --third-accent-color: #15796d;
+        --container-bg: #fff;
+        --text: #23263a;
+        --sidebar-bg: #f0f0f0;
+        --sidebar-text: #23263a;
+        --main-bg: #fff;
+        --main-text: #23263a;
+        --name-color: #39727d;
+        --role-color: #23263a;
+        --profile-bg: #f0f0f0;
+        --profile-text: #23263a;
+      }
+    </style>
+  </head>
 
   <body>
-    <button id="modeToggle" style="position:fixed;top:24px;right:24px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:var(--second-accent-color);color:var(--bg);font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">Light Mode</button>
-    <button id="langToggle" style="position:fixed;top:24px;right:140px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:var(--second-accent-color);color:var(--bg);font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">SV</button>
+    <button
+      id="modeToggle"
+      style="
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 1000;
+        padding: 8px 18px;
+        border-radius: 16px;
+        border: none;
+        background: var(--second-accent-color);
+        color: var(--bg);
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      "
+    >
+      Light Mode
+    </button>
+    <button
+      id="langToggle"
+      style="
+        position: fixed;
+        top: 24px;
+        right: 140px;
+        z-index: 1000;
+        padding: 8px 18px;
+        border-radius: 16px;
+        border: none;
+        background: var(--second-accent-color);
+        color: var(--bg);
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      "
+    >
+      SV
+    </button>
     <div class="layout">
       <aside class="sidebar">
-        <img src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg" alt="Hanif Bahari" class="profile-img" />
+        <img
+          src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg"
+          alt="Hanif Bahari"
+          class="profile-img"
+        />
         <div class="sidebar-section">
           <div class="sidebar-title">Contact</div>
           <div class="sidebar-content">
-            <div><i class="bi bi-telephone" style="margin-right:8px;"></i>076 576 01 86</div>
-            <div style="margin-top:10px;"><i class="bi bi-envelope" style="margin-right:8px;"></i>hanifbahari@gmail.com</div>
-            <div style="margin-top:10px;"><i class="bi bi-geo-alt" style="margin-right:8px;"></i>Imatragatan 252 Kista, Stockholm</div>
-            <div style="margin-top:10px; display: flex; gap: 12px;">
-              <a class="link-button" href="https://www.linkedin.com/in/hanifbahari" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin" style="font-size:1.3em;"></i></a>
-              <a class="link-button" href="https://github.com/hanifb1360" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" style="font-size:1.3em;"></i></a>
-              <a class="link-button" href="https://www.artstation.com/hanifbahari" aria-label="Artstation" target="_blank" rel="noopener noreferrer"><i class="bi bi-palette" style="font-size:1.3em;"></i></a>
+            <div>
+              <i class="bi bi-telephone" style="margin-right: 8px"></i>076 576
+              01 86
+            </div>
+            <div style="margin-top: 10px">
+              <i class="bi bi-envelope" style="margin-right: 8px"></i
+              >hanifbahari@gmail.com
+            </div>
+            <div style="margin-top: 10px">
+              <i class="bi bi-geo-alt" style="margin-right: 8px"></i>Imatragatan
+              252 Kista, Stockholm
+            </div>
+            <div style="margin-top: 10px; display: flex; gap: 12px">
+              <a
+                class="link-button"
+                href="https://www.linkedin.com/in/hanifbahari"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="bi bi-linkedin" style="font-size: 1.3em"></i
+              ></a>
+              <a
+                class="link-button"
+                href="https://github.com/hanifb1360"
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="bi bi-github" style="font-size: 1.3em"></i
+              ></a>
+              <a
+                class="link-button"
+                href="https://www.artstation.com/hanifbahari"
+                aria-label="Artstation"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="bi bi-palette" style="font-size: 1.3em"></i
+              ></a>
             </div>
           </div>
         </div>
@@ -324,11 +406,24 @@
         <div id="cv-en">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
-            <div class="role">Fullstack Web Developer <br> Web Designer</div>
+            <div class="role">
+              Fullstack Web Developer <br />
+              Web Designer
+            </div>
           </div>
           <div class="profile" id="profileSection">
             <div class="section-title">Summary</div>
-            <div>I am a Fullstack Web Developer and Web Designer with expertise in React, JavaScript, TypeScript, and Node.js. I build dynamic, scalable applications while ensuring they are visually engaging, responsive, and user-friendly. Skilled in both coding and design tools such as Figma, Photoshop, and Illustrator, I deliver end-to-end solutions that balance performance with modern UI/UX principles. My combined background in development and design enables me to create digital experiences that are technically robust and aesthetically refined.</div>
+            <div>
+              I am a Fullstack Web Developer and Web Designer with expertise in
+              React, JavaScript, TypeScript, and Node.js. I build dynamic,
+              scalable applications while ensuring they are visually engaging,
+              responsive, and user-friendly. Skilled in both coding and design
+              tools such as Figma, Photoshop, and Illustrator, I deliver
+              end-to-end solutions that balance performance with modern UI/UX
+              principles. My combined background in development and design
+              enables me to create digital experiences that are technically
+              robust and aesthetically refined.
+            </div>
           </div>
           <div class="experience" id="experienceSection">
             <div class="section-title">Experience</div>
@@ -337,24 +432,61 @@
           <div class="profile visible" id="educationSection">
             <div class="section-title">Education</div>
             <div>
-              <div>2021 - 2023<br><span>Frontend Development, Nackademin</span></div>
-              <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industrial Design / Design For ALL, Mid Sweden University</span></div>
-              <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industrial Design, Azad University (IAU)</span></div>
+              <div>
+                2021 - 2023<br /><span>Frontend Development, Nackademin</span>
+              </div>
+              <div style="margin-top: 10px">
+                2015 - 2017<br /><span
+                  >MA, Industrial Design / Design For ALL, Mid Sweden
+                  University</span
+                >
+              </div>
+              <div style="margin-top: 10px">
+                2001 - 2007<br /><span
+                  >BA, Industrial Design, Azad University (IAU)</span
+                >
+              </div>
             </div>
           </div>
-          <div class="profile" style="margin-bottom:24px;" id="certificationSection">
+          <div
+            class="profile"
+            style="margin-bottom: 24px"
+            id="certificationSection"
+          >
             <div class="section-title">Certification</div>
-            <div>UX Design: From Concept to Wireframe - University of Michigan<br><a id="certificate-link-button" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certificate Link</a></div>
+            <div>
+              UX Design: From Concept to Wireframe - University of Michigan<br /><a
+                id="certificate-link-button"
+                class="link-button"
+                href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Certificate Link</a
+              >
+            </div>
           </div>
         </div>
-        <div id="cv-sv" style="display:none;">
+        <div id="cv-sv" style="display: none">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
-            <div class="role">Fullstack Webbutvecklare <br> Webbdesigner</div>
+            <div class="role">
+              Fullstack Webbutvecklare <br />
+              Webbdesigner
+            </div>
           </div>
           <div class="profile" id="profileSection-sv">
             <div class="section-title">Sammanfattning</div>
-            <div>Jag är en fullstack webbutvecklare och webbdesigner med expertis inom React, JavaScript, TypeScript och Node.js. Jag bygger dynamiska, skalbara applikationer och ser till att de är visuellt tilltalande, responsiva och användarvänliga. Med färdigheter i både kodning och designverktyg som Figma, Photoshop och Illustrator levererar jag helhetslösningar som balanserar prestanda med modern UI/UX. Min kombinerade bakgrund inom utveckling och design gör att jag kan skapa digitala upplevelser som är både tekniskt robusta och estetiskt förfinade.</div>
+            <div>
+              Jag är en fullstack webbutvecklare och webbdesigner med expertis
+              inom React, JavaScript, TypeScript och Node.js. Jag bygger
+              dynamiska, skalbara applikationer och ser till att de är visuellt
+              tilltalande, responsiva och användarvänliga. Med färdigheter i
+              både kodning och designverktyg som Figma, Photoshop och
+              Illustrator levererar jag helhetslösningar som balanserar
+              prestanda med modern UI/UX. Min kombinerade bakgrund inom
+              utveckling och design gör att jag kan skapa digitala upplevelser
+              som är både tekniskt robusta och estetiskt förfinade.
+            </div>
           </div>
           <div class="experience" id="experienceSection-sv">
             <div class="section-title">Erfarenhet</div>
@@ -363,213 +495,340 @@
           <div class="profile visible" id="educationSection-sv">
             <div class="section-title">Utbildning</div>
             <div>
-              <div>2021 - 2023<br><span>Frontendutveckling, Nackademin</span></div>
-              <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industridesign / Design For ALL, Mittuniversitetet</span></div>
-              <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industridesign, Azad University (IAU)</span></div>
+              <div>
+                2021 - 2023<br /><span>Frontendutveckling, Nackademin</span>
+              </div>
+              <div style="margin-top: 10px">
+                2015 - 2017<br /><span
+                  >MA, Industridesign / Design For ALL, Mittuniversitetet</span
+                >
+              </div>
+              <div style="margin-top: 10px">
+                2001 - 2007<br /><span
+                  >BA, Industridesign, Azad University (IAU)</span
+                >
+              </div>
             </div>
           </div>
-          <div class="profile" style="margin-bottom:24px;" id="certificationSection-sv">
+          <div
+            class="profile"
+            style="margin-bottom: 24px"
+            id="certificationSection-sv"
+          >
             <div class="section-title">Certifiering</div>
-            <div>UX Design: Från Koncept till Wireframe - University of Michigan<br><a id="certificate-link-button-sv" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certifikat Länk</a></div>
+            <div>
+              UX Design: Från Koncept till Wireframe - University of Michigan<br /><a
+                id="certificate-link-button-sv"
+                class="link-button"
+                href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Certifikat Länk</a
+              >
+            </div>
           </div>
         </div>
       </main>
     </div>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Skills data
-        var skills = [
-          { name: 'JavaScript', level: 5 },
-          { name: 'HTML', level: 5 },
-          { name: 'CSS', level: 5 },
-          { name: 'React JS', level: 5 },
-          { name: 'React Native', level: 4 },
-          { name: 'Redux', level: 4 },
-          { name: 'Next JS', level: 3 },
-          { name: 'Gatsby JS', level: 3 },
-          { name: 'TypeScript', level: 4 },
-          { name: 'Mongo DB', level: 3 },
-          { name: 'Azure Cosmos DB', level: 3 },
-          { name: 'Node JS', level: 4 },
-          { name: 'Docker', level: 2 },
-          { name: 'Strapi', level: 3 },
-          { name: 'WordPress', level: 3 },
-          { name: 'GraphQL', level: 3 },
-          { name: 'REST API', level: 3 },
-          { name: 'Storybook', level: 2 },
-          { name: 'SCSS', level: 2 },
-          { name: 'Tailwind CSS', level: 2 },
-          { name: 'Web Components', level: 2 },
-          { name: 'Jest', level: 2 },
-          { name: 'Cypress', level: 2 },
-          { name: 'Swagger', level: 2 },
-          { name: 'Astro', level: 2 },
-          { name: 'PHP', level: 2 },
-          { name: 'Pixi JS', level: 2 },
-          { name: 'Figma', level: 3 },
-          { name: 'Adobe Photoshop', level: 2 },
-          { name: 'Adobe Illustrator', level: 2 },
-          { name: 'Adobe XD', level: 2 },
-          { name: 'Adobe Animate', level: 2 }
-        ];
-
-        // Experience data (English)
-        var experiencesEn = [
+      // Skills data with levels (1-5)
+      var skills = [
+        { name: "JavaScript", level: 4 },
+        { name: "TypeScript", level: 4 },
+        { name: "React", level: 4 },
+        { name: "Next.js", level: 4 },
+        { name: "Gatsby", level: 3 },
+        { name: "GraphQL", level: 3 },
+        { name: "Node.js", level: 5 },
+        { name: "HTML", level: 5 },
+        { name: "CSS", level: 5 },
+        { name: "Figma", level: 4 },
+        { name: "Adobe XD", level: 4 },
+        { name: "Principle", level: 3 },
+        { name: "Sketch", level: 4 },
+        { name: "Photoshop", level: 4 },
+        { name: "Illustrator", level: 3 },
+        { name: "After Effects", level: 3 },
+        { name: "Adobe Animate", level: 3 },
+        { name: "Framer", level: 3 },
+        { name: "Redux", level: 4 },
+        { name: "Astro", level: 4 },
+        { name: "Jest", level: 4 },
+        { name: "Cypress", level: 2 },
+        { name: "Sentry", level: 3 },
+        { name: "WordPress", level: 5 },
+        { name: "Elementor", level: 4 },
+        { name: "Hygraph", level: 4 },
+        { name: "Strapi", level: 4 },
+        { name: "PHP", level: 3 },
+        { name: "MySQL", level: 3 },
+        { name: "PostgreSQL", level: 3 },
+        { name: "MongoDB", level: 3 },
+        { name: "Docker", level: 3 },
+        { name: "Firebase", level: 3 },
+        { name: "Express.js", level: 4 },
+        { name: "RESTful APIs", level: 5 },
+        { name: "Git", level: 4 },
+        { name: "CI/CD", level: 3 },
+        { name: "Agile/Scrum", level: 4 },
+        { name: "Responsive Design", level: 5 },
+        { name: "SEO", level: 4 },
+        { name: "Web Accessibility (a11y)", level: 4 },
+        { name: "Design Systems", level: 4 },
+        { name: "UI/UX Design", level: 5 },
+        { name: "Game Development", level: 4 },
+      ];
+      document.addEventListener("DOMContentLoaded", function () {
+        // Experience data in English and Swedish
+        var experiences = [
           {
-            date: '2025 Jan - June',
-            role: 'Fullstack Developer',
-            company: 'KTH Royal Institute of Technology',
-            desc: 'Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.'
+            dateEn: "2025 Jan - June",
+            roleEn: "Fullstack Developer",
+            companyEn: "KTH Royal Institute of Technology",
+            descEn:
+              "Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.",
+            dateSv: "2025 Jan - Juni",
+            roleSv: "Fullstackutvecklare",
+            companySv: "KTH Kungliga Tekniska Högskolan",
+            descSv:
+              "Utvecklade hybrida Node.js + React-appar med TypeScript, integrerade frontend- och backendfunktioner. Underhöll 30+ Node.js-applikationer i en multi-repo-miljö med fokus på prestanda och skalbarhet. Implementerade i18n i React-appar för att stödja flerspråkiga användargränssnitt för en global publik. Byggde det nya WordPress-temat för KTH-bloggar med egna komponenter och integrerade det med Polopoly CMS och KTH Design System. Bidrog till KTH Public Design System (monorepo) för att säkerställa enhetlig UI över plattformar. Skapade snabba, SEO-vänliga dokumentationssajter för design-systemet med Astro, vilket förbättrade tillgänglighet och utvecklarupplevelse.",
           },
           {
-            date: '2022 - Ongoing',
-            role: 'Frontend Developer - Core team (Bazarma)',
-            company: 'Bazarma',
-            desc: 'Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.'
+            dateEn: "2022 - Ongoing",
+            roleEn: "Frontend Developer - Core team (Bazarma)",
+            companyEn: "Bazarma",
+            descEn:
+              "Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.",
+            dateSv: "2022 - Pågående",
+            roleSv: "Frontendutvecklare - Core team (Bazarma)",
+            companySv: "Bazarma",
+            descSv:
+              "Refaktorerade äldre React-klasskomponenter till funktionella komponenter för bättre effektivitet och underhåll. Implementerade Redux för konsekvent och tillförlitlig state management. Ledde webbplatsens redesign för förbättrad användarupplevelse och modern design. Utvecklade och förfinade ett sammanhängande designsystem för konsistens och effektiv utveckling. Skrev enhetstester och integrationstester med Jest samt end-to-end-tester med Cypress för att säkerställa kodkvalitet och tillförlitlighet. Integrerade Sentry för realtidsfelspårning och debugging, Google Analytics 4 (GA4) för användarinsikter och Google Tag Manager (GTM) för effektiv tagghantering och marknadsföringsspårning utan kodändringar.",
           },
           {
-            date: '2024',
-            role: 'Web Developer',
-            company: 'Byn Kommunikationsbyrå AB',
-            desc: 'Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.'
+            dateEn: "2024",
+            roleEn: "Web Developer",
+            companyEn: "Byn Kommunikationsbyrå AB",
+            descEn:
+              "Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.",
+            dateSv: "2024",
+            roleSv: "Webbutvecklare",
+            companySv: "Byn Kommunikationsbyrå AB",
+            descSv:
+              "Övervakade utvecklingsprocessen och samarbetade nära med designers. Skicklig på att lansera webbplatser med FTP-verktyg för smidiga lanseringar. Implementerade SEO-strategier för bättre synlighet och ranking. Implementerade bästa praxis för en säker och högpresterande användarupplevelse.",
           },
           {
-            date: '2023 - 2024',
-            role: 'Web Developer',
-            company: 'Falck & Co',
-            desc: 'Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.'
+            dateEn: "2023 - 2024",
+            roleEn: "Web Developer",
+            companyEn: "Falck & Co",
+            descEn:
+              "Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.",
+            dateSv: "2023 - 2024",
+            roleSv: "Webbutvecklare",
+            companySv: "Falck & Co",
+            descSv:
+              "Behärskade hela WordPress-stacken, inklusive frontend, backend och lansering via FTP-verktyg. Specialiserad på att skapa egna plugins, teman och funktioner i JavaScript och PHP. Erfarenhet av HTML, CSS, JavaScript och PHP för komplett WordPress-utveckling. Stor erfarenhet av att skapa skräddarsydda lösningar för att förbättra webbplatsens funktionalitet och estetik.",
           },
           {
-            date: '2017 - 2020',
-            role: 'Indie Game Developer | Creator of Uncle Magnuz',
-            company: 'Self Employed',
-            desc: 'Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.'
+            dateEn: "2017 - 2020",
+            roleEn: "Indie Game Developer | Creator of Uncle Magnuz",
+            companyEn: "Self Employed",
+            descEn:
+              'Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.',
+            dateSv: "2017 - 2020",
+            roleSv: "Indie Spelutvecklare | Skapare av Uncle Magnuz",
+            companySv: "Egenföretagare",
+            descSv:
+              'Konceptualiserade, designade och utvecklade "Uncle Magnuz", ett plattformsspel för iPhone. Skapade hela spelet från idé till lansering på iTunes. Visade skicklighet inom spelutveckling, inklusive programmering och grafik. Skapade och animerade allt material själv. Lanserade spelet på iTunes med positiv feedback.',
           },
           {
-            date: '2018 - 2019',
-            role: 'User Experience Designer',
-            company: 'VE AND VILE',
-            desc: 'UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.'
-          }
-        ];
-
-        // Experience data (Swedish)
-        var experiencesSv = [
-          {
-            date: '2025 Jan - Juni',
-            role: 'Fullstackutvecklare',
-            company: 'KTH Kungliga Tekniska Högskolan',
-            desc: 'Utvecklade hybrida Node.js + React-appar med TypeScript, integrerade frontend- och backendfunktioner. Underhöll 30+ Node.js-applikationer i en multi-repo-miljö med fokus på prestanda och skalbarhet. Implementerade i18n i React-appar för att stödja flerspråkiga användargränssnitt för en global publik. Byggde det nya WordPress-temat för KTH-bloggar med egna komponenter och integrerade det med Polopoly CMS och KTH Design System. Bidrog till KTH Public Design System (monorepo) för att säkerställa enhetlig UI över plattformar. Skapade snabba, SEO-vänliga dokumentationssajter för design-systemet med Astro, vilket förbättrade tillgänglighet och utvecklarupplevelse.'
+            dateEn: "2018 - 2019",
+            roleEn: "User Experience Designer",
+            companyEn: "VE AND VILE",
+            descEn:
+              "UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.",
+            dateSv: "2018 - 2019",
+            roleSv: "UX Designer",
+            companySv: "VE AND VILE",
+            descSv:
+              "UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.",
           },
-          {
-            date: '2022 - Pågående',
-            role: 'Frontendutvecklare - Core team (Bazarma)',
-            company: 'Bazarma',
-            desc: 'Refaktorerade äldre React-klasskomponenter till funktionella komponenter för bättre effektivitet och underhåll. Implementerade Redux för konsekvent och tillförlitlig state management. Ledde webbplatsens redesign för förbättrad användarupplevelse och modern design. Utvecklade och förfinade ett sammanhängande designsystem för konsistens och effektiv utveckling. Skrev enhetstester och integrationstester med Jest samt end-to-end-tester med Cypress för att säkerställa kodkvalitet och tillförlitlighet. Integrerade Sentry för realtidsfelspårning och debugging, Google Analytics 4 (GA4) för användarinsikter och Google Tag Manager (GTM) för effektiv tagghantering och marknadsföringsspårning utan kodändringar.'
-          },
-          {
-            date: '2024',
-            role: 'Webbutvecklare',
-            company: 'Byn Kommunikationsbyrå AB',
-            desc: 'Övervakade utvecklingsprocessen och samarbetade nära med designers. Skicklig på att lansera webbplatser med FTP-verktyg för smidiga lanseringar. Implementerade SEO-strategier för bättre synlighet och ranking. Implementerade bästa praxis för en säker och högpresterande användarupplevelse.'
-          },
-          {
-            date: '2023 - 2024',
-            role: 'Webbutvecklare',
-            company: 'Falck & Co',
-            desc: 'Behärskade hela WordPress-stacken, inklusive frontend, backend och lansering via FTP-verktyg. Specialiserad på att skapa egna plugins, teman och funktioner i JavaScript och PHP. Erfarenhet av HTML, CSS, JavaScript och PHP för komplett WordPress-utveckling. Stor erfarenhet av att skapa skräddarsydda lösningar för att förbättra webbplatsens funktionalitet och estetik.'
-          },
-          {
-            date: '2017 - 2020',
-            role: 'Indie Spelutvecklare | Skapare av Uncle Magnuz',
-            company: 'Egenföretagare',
-            desc: 'Konceptualiserade, designade och utvecklade "Uncle Magnuz", ett plattformsspel för iPhone. Skapade hela spelet från idé till lansering på iTunes. Visade skicklighet inom spelutveckling, inklusive programmering och grafik. Skapade och animerade allt material själv. Lanserade spelet på iTunes med positiv feedback.'
-          },
-          {
-            date: '2018 - 2019',
-            role: 'UX Designer',
-            company: 'VE AND VILE',
-            desc: 'UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.'
-          }
         ];
 
         // Render skills
-        var skillListEl = document.getElementById('skillList');
+        var skillListEl = document.getElementById("skillList");
         if (skillListEl) {
-          skillListEl.innerHTML = skills.map(function(skill) {
-            return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
-          }).join('');
+          skillListEl.innerHTML = skills
+            .map(function (skill) {
+              return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
+            })
+            .join("");
         }
 
-        // Render experience (English)
-        var expListEn = document.getElementById('expList-en');
-        if (expListEn) {
-          expListEn.innerHTML = experiencesEn.map(function(exp) {
-            return `<div class='exp-item'><div class='exp-date'>${exp.date}</div><div class='exp-role'>${exp.role}</div><div class='exp-company'>${exp.company}</div><div class='exp-desc'>${exp.desc}</div></div>`;
-          }).join('');
+        // Render experience blocks
+        function renderExperience(lang) {
+          var expListEn = document.getElementById("expList-en");
+          var expListSv = document.getElementById("expList-sv");
+          if (expListEn) {
+            expListEn.innerHTML = experiences
+              .map(function (exp) {
+                return `<div class='exp-item'><div class='exp-date'>${exp.dateEn}</div><div class='exp-role'>${exp.roleEn}</div><div class='exp-company'>${exp.companyEn}</div><div class='exp-desc'>${exp.descEn}</div></div>`;
+              })
+              .join("");
+          }
+          if (expListSv) {
+            expListSv.innerHTML = experiences
+              .map(function (exp) {
+                return `<div class='exp-item'><div class='exp-date'>${exp.dateSv}</div><div class='exp-role'>${exp.roleSv}</div><div class='exp-company'>${exp.companySv}</div><div class='exp-desc'>${exp.descSv}</div></div>`;
+              })
+              .join("");
+          }
         }
 
-        // Render experience (Swedish)
-        var expListSv = document.getElementById('expList-sv');
-        if (expListSv) {
-          expListSv.innerHTML = experiencesSv.map(function(exp) {
-            return `<div class='exp-item'><div class='exp-date'>${exp.date}</div><div class='exp-role'>${exp.role}</div><div class='exp-company'>${exp.company}</div><div class='exp-desc'>${exp.desc}</div></div>`;
-          }).join('');
-        }
+        // Initial render
+        renderExperience("en");
 
         function animateSkillBars(skillList) {
-          skillList.querySelectorAll('.skill-item').forEach(function(item, idx) {
-            var bar = item.querySelector('.lightning-bar');
-            var level = parseInt(item.getAttribute('data-level'), 10) || 3;
-            var width = level * 18;
-            bar.style.width = '0px';
-            bar.style.opacity = '1';
-            setTimeout(function() {
-              bar.style.width = width + 'px';
-              bar.classList.add('visible');
-            }, 600 + idx * 220);
-          });
+          skillList
+            .querySelectorAll(".skill-item")
+            .forEach(function (item, idx) {
+              var bar = item.querySelector(".lightning-bar");
+              var level = parseInt(item.getAttribute("data-level"), 10) || 3;
+              var width = level * 18;
+              bar.style.width = "0px";
+              bar.style.opacity = "1";
+              setTimeout(function () {
+                bar.style.width = width + "px";
+                bar.classList.add("visible");
+              }, 600 + idx * 220);
+            });
         }
         // Animate sidebar skill bars on load
         if (skillListEl) animateSkillBars(skillListEl);
         // Section fade-in for both languages
-        ["profileSection", "experienceSection", "skillsSection", "certificationSection", "educationSection"].forEach(function(id, i) {
-          setTimeout(function() {
+        [
+          "profileSection",
+          "experienceSection",
+          "skillsSection",
+          "certificationSection",
+          "educationSection",
+        ].forEach(function (id, i) {
+          setTimeout(function () {
             var el = document.getElementById(id);
-            if (el) el.classList.add('visible');
+            if (el) el.classList.add("visible");
           }, 300 + i * 250);
         });
-        ["profileSection-sv", "experienceSection-sv", "skillsSection", "certificationSection-sv", "educationSection-sv"].forEach(function(id, i) {
-          setTimeout(function() {
+        [
+          "profileSection-sv",
+          "experienceSection-sv",
+          "skillsSection",
+          "certificationSection-sv",
+          "educationSection-sv",
+        ].forEach(function (id, i) {
+          setTimeout(function () {
             var el = document.getElementById(id);
-            if (el) el.classList.add('visible');
+            if (el) el.classList.add("visible");
+          }, 300 + i * 250);
+        });
+
+        // Dark/light mode toggle
+        var mode = "dark";
+        function setMode(m) {
+          document.documentElement.classList.remove("dark", "light");
+          document.documentElement.classList.add(m);
+          document.getElementById("modeToggle").textContent =
+            m === "dark" ? "Light Mode" : "Dark Mode";
+        }
+        setMode("dark");
+        document.getElementById("modeToggle").onclick = function () {
+          mode = mode === "dark" ? "light" : "dark";
+          setMode(mode);
+        };
+
+        // Language toggle
+        var lang = "en";
+        function setLang(l) {
+          document.getElementById("cv-en").style.display =
+            l === "en" ? "" : "none";
+          document.getElementById("cv-sv").style.display =
+            l === "sv" ? "" : "none";
+          document.getElementById("langToggle").textContent =
+            l === "en" ? "SV" : "EN";
+          renderExperience(l);
+          // Fade-in animation for sections
+          if (l === "en") {
+            [
+              "profileSection",
+              "experienceSection",
+              "skillsSection",
+              "certificationSection",
+              "educationSection",
+            ].forEach(function (id, i) {
+              var el = document.getElementById(id);
+              if (el) el.classList.add("visible");
+            });
+          } else {
+            [
+              "profileSection-sv",
+              "experienceSection-sv",
+              "skillsSection",
+              "certificationSection-sv",
+              "educationSection-sv",
+            ].forEach(function (id, i) {
+              var el = document.getElementById(id);
+              if (el) el.classList.add("visible");
+            });
+          }
+        }
+        setLang("en");
+        document.getElementById("langToggle").onclick = function () {
+          lang = lang === "en" ? "sv" : "en";
+          setLang(lang);
+        };
+
+        function animateSkillBars(skillList) {
+          skillList
+            .querySelectorAll(".skill-item")
+            .forEach(function (item, idx) {
+              var bar = item.querySelector(".lightning-bar");
+              var level = parseInt(item.getAttribute("data-level"), 10) || 3;
+              var width = level * 18;
+              bar.style.width = "0px";
+              bar.style.opacity = "1";
+              setTimeout(function () {
+                bar.style.width = width + "px";
+                bar.classList.add("visible");
+              }, 600 + idx * 220);
+            });
+        }
+        // Animate sidebar skill bars on load
+        if (skillListEl) animateSkillBars(skillListEl);
+        // Section fade-in for both languages
+        [
+          "profileSection",
+          "experienceSection",
+          "skillsSection",
+          "certificationSection",
+          "educationSection",
+        ].forEach(function (id, i) {
+          setTimeout(function () {
+            var el = document.getElementById(id);
+            if (el) el.classList.add("visible");
+          }, 300 + i * 250);
+        });
+        [
+          "profileSection-sv",
+          "experienceSection-sv",
+          "skillsSection",
+          "certificationSection-sv",
+          "educationSection-sv",
+        ].forEach(function (id, i) {
+          setTimeout(function () {
+            var el = document.getElementById(id);
+            if (el) el.classList.add("visible");
           }, 300 + i * 250);
         });
       });
-      // Dark/light mode toggle
-      var mode = 'dark';
-      function setMode(m) {
-        document.documentElement.classList.remove('dark','light');
-        document.documentElement.classList.add(m);
-        document.getElementById('modeToggle').textContent = m === 'dark' ? 'Light Mode' : 'Dark Mode';
-      }
-      setMode('dark');
-      document.getElementById('modeToggle').onclick = function() {
-        mode = mode === 'dark' ? 'light' : 'dark';
-        setMode(mode);
-      };
-      // Language toggle
-      var lang = 'en';
-      function setLang(l) {
-        document.getElementById('cv-en').style.display = l === 'en' ? '' : 'none';
-        document.getElementById('cv-sv').style.display = l === 'sv' ? '' : 'none';
-        document.getElementById('langToggle').textContent = l === 'en' ? 'SV' : 'EN';
-      }
-      setLang('en');
-      document.getElementById('langToggle').onclick = function() {
-        lang = lang === 'en' ? 'sv' : 'en';
-        setLang(lang);
-      };
     </script>
   </body>
 </html>
