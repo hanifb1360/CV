@@ -435,6 +435,7 @@
     <a href="#experienceSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to experience">Skip to experience</a>
     <a href="#educationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to education">Skip to education</a>
     <a href="#certificationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to certification">Skip to certification</a>
+    <div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
     <button id="modeToggle" aria-label="Toggle light/dark mode">
       Light Mode
     </button>
@@ -916,20 +917,30 @@
         renderExperience("en");
         setMode("dark");
         setLang("en");
+        var liveRegion = document.getElementById("live-region");
+        function announce(msg) {
+          if (liveRegion) {
+            liveRegion.textContent = msg;
+            setTimeout(function () { liveRegion.textContent = ""; }, 2000);
+          }
+        }
         document.getElementById("modeToggle").onclick = function () {
           mode = mode === "dark" ? "light" : "dark";
           setMode(mode);
+          announce(mode === "dark" ? "Dark mode enabled" : "Light mode enabled");
         };
         var langToggleBtn = document.getElementById("langToggle");
         langToggleBtn.onclick = function () {
           lang = lang === "en" ? "sv" : "en";
           setLang(lang);
+          announce(lang === "en" ? "English language enabled" : "Swedish language enabled");
         };
         langToggleBtn.onkeydown = function (e) {
           if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
             e.preventDefault();
             lang = lang === "en" ? "sv" : "en";
             setLang(lang);
+            announce(lang === "en" ? "English language enabled" : "Swedish language enabled");
           }
         };
         // Section fade-in for both languages (initial)
