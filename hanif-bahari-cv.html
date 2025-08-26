@@ -420,6 +420,11 @@
           padding: 18px 6px;
         }
       }
+      #cv-en,
+      #cv-sv {
+        transition: opacity 0.5s;
+        opacity: 1;
+      }
     </style>
   </head>
 
@@ -435,7 +440,7 @@
       Light Mode
     </button>
     <button id="langToggle" aria-label="Toggle language">SV</button>
-    <div class="layout">
+    <div class="layout" aria-live="polite">
       <aside class="sidebar" aria-label="Sidebar">
         <img
           src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg"
@@ -881,38 +886,34 @@
       }
       var lang = "en";
       function setLang(l) {
-        document.getElementById("cv-en").style.display =
-          l === "en" ? "" : "none";
-        document.getElementById("cv-sv").style.display =
-          l === "sv" ? "" : "none";
-        document.getElementById("langToggle").textContent =
-          l === "en" ? "SV" : "EN";
+        var enDiv = document.getElementById("cv-en");
+        var svDiv = document.getElementById("cv-sv");
+        var langToggle = document.getElementById("langToggle");
+        // Fade out current
+        enDiv.style.opacity = l === "en" ? "1" : "0";
+        svDiv.style.opacity = l === "sv" ? "1" : "0";
+        enDiv.style.pointerEvents = l === "en" ? "auto" : "none";
+        svDiv.style.pointerEvents = l === "sv" ? "auto" : "none";
+        enDiv.setAttribute("aria-hidden", l !== "en");
+        svDiv.setAttribute("aria-hidden", l !== "sv");
+        enDiv.style.display = l === "en" ? "" : "none";
+        svDiv.style.display = l === "sv" ? "" : "none";
+        langToggle.textContent = l === "en" ? "SV" : "EN";
         renderExperience(l);
         updateSidebar(l);
         // Fade-in animation for sections
-        if (l === "en") {
-          [
-            "profileSection",
-            "experienceSection",
-            "skillsSection",
-            "certificationSection",
-            "educationSection",
-          ].forEach(function (id, i) {
-            var el = document.getElementById(id);
-            if (el) el.classList.add("visible");
-          });
-        } else {
-          [
-            "profileSection-sv",
-            "experienceSection-sv",
-            "skillsSection",
-            "certificationSection-sv",
-            "educationSection-sv",
-          ].forEach(function (id, i) {
-            var el = document.getElementById(id);
-            if (el) el.classList.add("visible");
-          });
-        }
+        var fadeIds = l === "en"
+          ? ["profileSection", "experienceSection", "skillsSection", "certificationSection", "educationSection"]
+          : ["profileSection-sv", "experienceSection-sv", "skillsSection", "certificationSection-sv", "educationSection-sv"];
+        fadeIds.forEach(function (id, i) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.classList.remove("visible");
+            setTimeout(function () {
+              el.classList.add("visible");
+            }, 100 + i * 180);
+          }
+        });
       }
 
       // -------------------
@@ -927,9 +928,17 @@
           mode = mode === "dark" ? "light" : "dark";
           setMode(mode);
         };
-        document.getElementById("langToggle").onclick = function () {
+        var langToggleBtn = document.getElementById("langToggle");
+        langToggleBtn.onclick = function () {
           lang = lang === "en" ? "sv" : "en";
           setLang(lang);
+        };
+        langToggleBtn.onkeydown = function (e) {
+          if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            lang = lang === "en" ? "sv" : "en";
+            setLang(lang);
+          }
         };
         // Section fade-in for both languages (initial)
         [
