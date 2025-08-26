@@ -310,40 +310,7 @@
         <div class="sidebar-section">
           <div class="sidebar-title">Skills</div>
           <div class="sidebar-content">
-            <div class="skill-list">
-              <div class="skill-item" data-level="5">JavaScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="5">HTML <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="5">CSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="5">React JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="4">React Native <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="4">Redux <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Next JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Gatsby JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="4">TypeScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Mongo DB <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Azure Cosmos DB <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="4">Node JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Docker <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Strapi <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">WordPress <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">GraphQL <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">REST API <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Storybook <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">SCSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Tailwind CSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Web Components <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Jest <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Cypress <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Swagger <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Astro <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">PHP <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Pixi JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Figma <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Adobe Photoshop <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Adobe Illustrator <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Adobe XD <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="2">Adobe Animate <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-            </div>
+            <div class="skill-list" id="skillList"></div>
           </div>
         </div>
         <div class="sidebar-section">
@@ -480,6 +447,50 @@
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Skills data
+        var skills = [
+          { name: 'JavaScript', level: 5 },
+          { name: 'HTML', level: 5 },
+          { name: 'CSS', level: 5 },
+          { name: 'React JS', level: 5 },
+          { name: 'React Native', level: 4 },
+          { name: 'Redux', level: 4 },
+          { name: 'Next JS', level: 3 },
+          { name: 'Gatsby JS', level: 3 },
+          { name: 'TypeScript', level: 4 },
+          { name: 'Mongo DB', level: 3 },
+          { name: 'Azure Cosmos DB', level: 3 },
+          { name: 'Node JS', level: 4 },
+          { name: 'Docker', level: 2 },
+          { name: 'Strapi', level: 3 },
+          { name: 'WordPress', level: 3 },
+          { name: 'GraphQL', level: 3 },
+          { name: 'REST API', level: 3 },
+          { name: 'Storybook', level: 2 },
+          { name: 'SCSS', level: 2 },
+          { name: 'Tailwind CSS', level: 2 },
+          { name: 'Web Components', level: 2 },
+          { name: 'Jest', level: 2 },
+          { name: 'Cypress', level: 2 },
+          { name: 'Swagger', level: 2 },
+          { name: 'Astro', level: 2 },
+          { name: 'PHP', level: 2 },
+          { name: 'Pixi JS', level: 2 },
+          { name: 'Figma', level: 3 },
+          { name: 'Adobe Photoshop', level: 2 },
+          { name: 'Adobe Illustrator', level: 2 },
+          { name: 'Adobe XD', level: 2 },
+          { name: 'Adobe Animate', level: 2 }
+        ];
+
+        // Render skills
+        var skillListEl = document.getElementById('skillList');
+        if (skillListEl) {
+          skillListEl.innerHTML = skills.map(function(skill) {
+            return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
+          }).join('');
+        }
+
         function animateSkillBars(skillList) {
           skillList.querySelectorAll('.skill-item').forEach(function(item, idx) {
             var bar = item.querySelector('.lightning-bar');
@@ -494,8 +505,7 @@
           });
         }
         // Animate sidebar skill bars on load
-        var sidebarSkillList = document.querySelector('.sidebar .skill-list');
-        if (sidebarSkillList) animateSkillBars(sidebarSkillList);
+        if (skillListEl) animateSkillBars(skillListEl);
         // Section fade-in for both languages
         ["profileSection", "experienceSection", "skillsSection", "certificationSection", "educationSection"].forEach(function(id, i) {
           setTimeout(function() {
