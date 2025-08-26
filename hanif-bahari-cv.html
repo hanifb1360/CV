@@ -397,7 +397,7 @@
         </div>
         <div class="sidebar-section">
           <div class="sidebar-title" id="sidebar-languages-title">Languages</div>
-          <div class="sidebar-content">
+          <div class="sidebar-content" id="sidebar-languages-content">
             <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
         </div>
@@ -759,6 +759,10 @@
             languages: "Språk"
           }
         };
+        var sidebarLanguagesContent = {
+          en: "<span>Persian</span>, <span>English</span>, <span>Swedish</span>",
+          sv: "<span>Persiska</span>, <span>Engelska</span>, <span>Svenska</span>"
+        };
         function setLang(l) {
           document.getElementById("cv-en").style.display =
             l === "en" ? "" : "none";
@@ -771,6 +775,8 @@
           document.getElementById("sidebar-contact-title").textContent = sidebarTitles[l].contact;
           document.getElementById("sidebar-skills-title").textContent = sidebarTitles[l].skills;
           document.getElementById("sidebar-languages-title").textContent = sidebarTitles[l].languages;
+          // Sidebar languages content
+          document.getElementById("sidebar-languages-content").innerHTML = sidebarLanguagesContent[l];
           // Fade-in animation for sections
           if (l === "en") {
             [
