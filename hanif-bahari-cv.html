@@ -186,24 +186,32 @@
       min-width: 120px;
       text-shadow: none;
       font-family: var(--font-text);
+      position: relative;
     }
-    .skill-dots {
+    .skill-lightning {
       display: flex;
-      margin-left: 10px;
-      gap: 3px;
+      align-items: center;
+      margin-left: 14px;
+      width: 100px;
+      height: 12px;
+      position: relative;
+      background: none;
+      overflow: visible;
     }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--dot-bg, #fffbe6);
-      display: inline-block;
-      transition: background 0.4s;
-      border: 2px solid var(--name-color);
+    .lightning-bar {
+      display: block;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #f7c948 0%, #66c9ff 60%, #48f7e3 100%), #f7c948;
+      box-shadow: 0 0 8px 2px #66c9ff88, 0 0 2px 1px #f7c94888;
+      border: 1px solid #66c9ff;
+      transition: width 0.7s cubic-bezier(.77,0,.18,1), box-shadow 0.4s;
+      z-index: 1;
+      width: 0;
+      opacity: 1;
     }
-    .dot.active {
-      background: var(--name-color);
-      border-color: var(--sidebar-text);
+    .lightning-bar.visible {
+      box-shadow: 0 0 16px 4px #66c9ffcc, 0 0 4px 2px #f7c948cc;
     }
     .link-button {
       display: inline-block;
@@ -309,15 +317,15 @@
           <div class="sidebar-title">Skills</div>
           <div class="sidebar-content">
             <div class="skill-list">
-              <div class="skill-item">JavaScript <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">React JS <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">Redux <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">TypeScript <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">Node.js <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">WordPress <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">PHP <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">Docker <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
-              <div class="skill-item">Figma <span class="skill-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+              <div class="skill-item" data-level="5">JavaScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="5">React JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="4">Redux <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">TypeScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Node.js <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">WordPress <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">PHP <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="1">Docker <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Figma <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
             </div>
           </div>
         </div>
@@ -393,12 +401,15 @@
           }, 300 + i * 250);
         });
         document.querySelectorAll('.skill-item').forEach(function(item, idx) {
-          var dots = item.querySelectorAll('.dot');
-          var levels = [5,5,4,3,3,3,2,1,3];
-          var level = levels[idx] || 3;
-          for (let i = 0; i < level; i++) {
-            setTimeout(() => dots[i].classList.add('active'), 500 + i*120);
-          }
+          var bar = item.querySelector('.lightning-bar');
+          var level = parseInt(item.getAttribute('data-level'), 10) || 3;
+          var width = level * 18;
+          bar.style.width = '0px';
+          bar.style.opacity = '1';
+          setTimeout(function() {
+            bar.style.width = width + 'px';
+            bar.classList.add('visible');
+          }, 600 + idx * 220);
         });
       });
       // Dark/light mode toggle
