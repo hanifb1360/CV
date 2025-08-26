@@ -267,16 +267,19 @@
       .skill-item {
         display: flex;
         align-items: center;
+        width: 100%;
         font-size: 1rem;
         color: var(--sidebar-text);
         font-weight: 700;
-        min-width: 120px;
         text-shadow: none;
         font-family: var(--font-text);
         position: relative;
         outline: none;
         cursor: pointer;
         transition: box-shadow 0.2s;
+      }
+      .skill-item > span {
+        margin-left: auto;
       }
       .skill-item:focus {
         box-shadow: 0 0 0 2px var(--accent-color);
@@ -285,12 +288,13 @@
       .skill-lightning {
         display: flex;
         align-items: center;
-        margin-left: 14px;
-        width: 100px;
+        justify-content: flex-end;
+        width: 120px;
         height: 12px;
         position: relative;
         background: none;
         overflow: visible;
+        margin-left: 0;
       }
       .lightning-bar {
         display: block;
