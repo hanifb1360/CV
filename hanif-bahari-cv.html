@@ -53,23 +53,25 @@
         --profile-text: #23263a;
       }
 
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition: none !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+        .profile,
+        .experience,
+        .skills-main {
+          transition: none !important;
+        }
+        #cv-en,
+        #cv-sv {
+          transition: none !important;
+        }
       }
-      .profile,
-      .experience,
-      .skills-main {
-        transition: none !important;
-      }
-      #cv-en,
-      #cv-sv {
-        transition: none !important;
-      }
-    }
 
       /* -------------------
          LAYOUT
@@ -88,7 +90,7 @@
         min-height: 100vh;
         max-width: 950px;
         margin: 0 auto;
-        background: var(--container-bg, #1c1e26);
+        background: var(--container-bg);
         overflow: hidden;
       }
 
@@ -112,7 +114,6 @@
       }
       .sidebar-section {
         padding: 24px 28px;
-        border-bottom: 1px solid #2d3e50;
       }
       .sidebar-section:last-child {
         border-bottom: none;
@@ -178,6 +179,12 @@
         text-shadow: 0 1px 0 var(--sidebar-bg);
         font-family: var(--font-title);
         outline: none;
+      }
+
+      #cv-en,
+      #cv-sv {
+        transition: opacity 0.5s;
+        opacity: 1;
       }
 
       /* -------------------
@@ -269,8 +276,6 @@
         position: relative;
         outline: none;
         cursor: pointer;
-        /* Make skill items focusable for keyboard navigation */
-        /* Accessibility: visually indicate focus */
         transition: box-shadow 0.2s;
       }
       .skill-item:focus {
@@ -438,34 +443,46 @@
           padding: 18px 6px;
         }
       }
-      #cv-en,
-      #cv-sv {
-        transition: opacity 0.5s;
-        opacity: 1;
-      }
     </style>
   </head>
 
   <body>
-    <a href="#main-content" class="sr-only skip-link" tabindex="0" aria-label="Skip to main content">Skip to main content</a>
-    <a href="#sidebar" class="sr-only skip-link" tabindex="0" aria-label="Skip to sidebar">Skip to sidebar</a>
-    <a href="#skillsSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to skills">Skip to skills</a>
-    <a href="#experienceSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to experience">Skip to experience</a>
-    <a href="#educationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to education">Skip to education</a>
-    <a href="#certificationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to certification">Skip to certification</a>
-    <div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+    <nav aria-label="Skip links">
+      <a href="#main-content" class="sr-only skip-link" tabindex="0" aria-label="Skip to main content">Skip to main content</a>
+      <a href="#sidebar" class="sr-only skip-link" tabindex="0" aria-label="Skip to sidebar">Skip to sidebar</a>
+      <a href="#skillsSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to skills">Skip to skills</a>
+      <a href="#experienceSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to experience">Skip to experience</a>
+      <a href="#educationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to education">Skip to education</a>
+      <a href="#certificationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to certification">Skip to certification</a>
+    </nav>
+    <div
+      id="live-region"
+      aria-live="polite"
+      aria-atomic="true"
+      class="sr-only"
+    ></div>
     <button id="modeToggle" aria-label="Toggle light/dark mode">
       Light Mode
     </button>
     <button id="langToggle" aria-label="Toggle language">SV</button>
     <div class="layout" aria-live="polite">
-      <aside class="sidebar" id="sidebar" role="complementary" aria-label="Sidebar">
+      <aside
+        class="sidebar"
+        id="sidebar"
+        role="complementary"
+        aria-label="Sidebar"
+      >
         <img
           src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg"
           alt="Hanif Bahari portrait"
           class="profile-img"
         />
-        <div class="sidebar-section" aria-labelledby="sidebar-contact-title" role="region" aria-label="Contact section">
+        <section
+          class="sidebar-section"
+          aria-labelledby="sidebar-contact-title"
+          role="region"
+          aria-label="Contact section"
+        >
           <div class="sidebar-title" id="sidebar-contact-title" tabindex="0">
             Contact
           </div>
@@ -522,25 +539,40 @@
               ></a>
             </div>
           </div>
-        </div>
-        <div class="sidebar-section" aria-labelledby="sidebar-skills-title" role="region" aria-label="Skills section">
+        </section>
+        <section
+          class="sidebar-section"
+          aria-labelledby="sidebar-skills-title"
+          role="region"
+          aria-label="Skills section"
+        >
           <div class="sidebar-title" id="sidebar-skills-title" tabindex="0">
             Skills
           </div>
           <div class="sidebar-content">
             <div class="skill-list" id="skillList"></div>
           </div>
-        </div>
-        <div class="sidebar-section" aria-labelledby="sidebar-languages-title" role="region" aria-label="Languages section">
+        </section>
+        <section
+          class="sidebar-section"
+          aria-labelledby="sidebar-languages-title"
+          role="region"
+          aria-label="Languages section"
+        >
           <div class="sidebar-title" id="sidebar-languages-title" tabindex="0">
             Languages
           </div>
           <div class="sidebar-content" id="sidebar-languages-content">
             <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
-        </div>
+        </section>
       </aside>
-      <main class="main" id="main-content" role="main" aria-label="Main content">
+      <main
+        class="main"
+        id="main-content"
+        role="main"
+        aria-label="Main content"
+      >
         <div id="cv-en" role="region" aria-label="English CV">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
@@ -549,7 +581,14 @@
               Web Designer
             </div>
           </div>
-          <section class="profile section-block" id="profileSection" aria-labelledby="profileSection-title" tabindex="-1" role="region" aria-label="Summary section">
+          <section
+            class="profile section-block"
+            id="profileSection"
+            aria-labelledby="profileSection-title"
+            tabindex="-1"
+            role="region"
+            aria-label="Summary section"
+          >
             <div class="section-title" id="profileSection-title">Summary</div>
             <div>
               I am a Fullstack Web Developer and Web Designer with expertise in
@@ -563,11 +602,21 @@
               robust and aesthetically refined.
             </div>
           </section>
-          <div class="experience section-block" id="experienceSection" role="region" aria-label="Experience section">
+          <div
+            class="experience section-block"
+            id="experienceSection"
+            role="region"
+            aria-label="Experience section"
+          >
             <div class="section-title">Experience</div>
             <div id="expList-en"></div>
           </div>
-          <div class="profile section-block visible" id="educationSection" role="region" aria-label="Education section">
+          <div
+            class="profile section-block visible"
+            id="educationSection"
+            role="region"
+            aria-label="Education section"
+          >
             <div class="section-title">Education</div>
             <div>
               <div>
@@ -586,7 +635,13 @@
               </div>
             </div>
           </div>
-          <div class="profile section-block" style="margin-bottom: 24px" id="certificationSection" role="region" aria-label="Certification section">
+          <div
+            class="profile section-block"
+            style="margin-bottom: 24px"
+            id="certificationSection"
+            role="region"
+            aria-label="Certification section"
+          >
             <div class="section-title">Certification</div>
             <div>
               UX Design: From Concept to Wireframe - University of Michigan<br /><a
@@ -600,7 +655,12 @@
             </div>
           </div>
         </div>
-        <div id="cv-sv" style="display: none" role="region" aria-label="Swedish CV">
+        <div
+          id="cv-sv"
+          style="display: none"
+          role="region"
+          aria-label="Swedish CV"
+        >
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
             <div class="role">
@@ -608,7 +668,12 @@
               Webbdesigner
             </div>
           </div>
-          <div class="profile section-block" id="profileSection-sv" role="region" aria-label="Sammanfattning section">
+          <div
+            class="profile section-block"
+            id="profileSection-sv"
+            role="region"
+            aria-label="Sammanfattning section"
+          >
             <div class="section-title">Sammanfattning</div>
             <div>
               Jag är en fullstack webbutvecklare och webbdesigner med expertis
@@ -622,11 +687,21 @@
               som är både tekniskt robusta och estetiskt förfinade.
             </div>
           </div>
-          <div class="experience section-block" id="experienceSection-sv" role="region" aria-label="Erfarenhet section">
+          <div
+            class="experience section-block"
+            id="experienceSection-sv"
+            role="region"
+            aria-label="Erfarenhet section"
+          >
             <div class="section-title">Erfarenhet</div>
             <div id="expList-sv"></div>
           </div>
-          <div class="profile section-block visible" id="educationSection-sv" role="region" aria-label="Utbildning section">
+          <div
+            class="profile section-block visible"
+            id="educationSection-sv"
+            role="region"
+            aria-label="Utbildning section"
+          >
             <div class="section-title">Utbildning</div>
             <div>
               <div>
@@ -644,7 +719,15 @@
               </div>
             </div>
           </div>
-          <section class="profile section-block" style="margin-bottom: 24px" id="certificationSection-sv" aria-labelledby="certificationSection-sv-title" tabindex="-1" role="region" aria-label="Certifiering section">
+          <section
+            class="profile section-block"
+            style="margin-bottom: 24px"
+            id="certificationSection-sv"
+            aria-labelledby="certificationSection-sv-title"
+            tabindex="-1"
+            role="region"
+            aria-label="Certifiering section"
+          >
             <div class="section-title" id="certificationSection-sv-title">
               Certifiering
             </div>
@@ -724,7 +807,9 @@
         }
       }
       function animateSkillBars(skillList) {
-        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
         skillList.querySelectorAll(".skill-item").forEach(function (item, idx) {
           var bar = item.querySelector(".lightning-bar");
           var level = parseInt(item.getAttribute("data-level"), 10) || 3;
@@ -898,7 +983,9 @@
         renderExperience(l);
         updateSidebar(l);
         // Fade-in animation for sections
-        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
         var fadeIds =
           l === "en"
             ? [
@@ -942,30 +1029,44 @@
         function announce(msg) {
           if (liveRegion) {
             liveRegion.textContent = msg;
-            setTimeout(function () { liveRegion.textContent = ""; }, 2000);
+            setTimeout(function () {
+              liveRegion.textContent = "";
+            }, 2000);
           }
         }
         document.getElementById("modeToggle").onclick = function () {
           mode = mode === "dark" ? "light" : "dark";
           setMode(mode);
-          announce(mode === "dark" ? "Dark mode enabled" : "Light mode enabled");
+          announce(
+            mode === "dark" ? "Dark mode enabled" : "Light mode enabled"
+          );
         };
         var langToggleBtn = document.getElementById("langToggle");
         langToggleBtn.onclick = function () {
           lang = lang === "en" ? "sv" : "en";
           setLang(lang);
-          announce(lang === "en" ? "English language enabled" : "Swedish language enabled");
+          announce(
+            lang === "en"
+              ? "English language enabled"
+              : "Swedish language enabled"
+          );
         };
         langToggleBtn.onkeydown = function (e) {
           if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
             e.preventDefault();
             lang = lang === "en" ? "sv" : "en";
             setLang(lang);
-            announce(lang === "en" ? "English language enabled" : "Swedish language enabled");
+            announce(
+              lang === "en"
+                ? "English language enabled"
+                : "Swedish language enabled"
+            );
           }
         };
         // Section fade-in for both languages (initial)
-        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
         [
           "profileSection",
           "experienceSection",
