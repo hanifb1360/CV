@@ -429,25 +429,24 @@
   </head>
 
   <body>
-    <a
-      href="#main-content"
-      class="sr-only skip-link"
-      tabindex="0"
-      aria-label="Skip to main content"
-      >Skip to main content</a
-    >
+    <a href="#main-content" class="sr-only skip-link" tabindex="0" aria-label="Skip to main content">Skip to main content</a>
+    <a href="#sidebar" class="sr-only skip-link" tabindex="0" aria-label="Skip to sidebar">Skip to sidebar</a>
+    <a href="#skillsSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to skills">Skip to skills</a>
+    <a href="#experienceSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to experience">Skip to experience</a>
+    <a href="#educationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to education">Skip to education</a>
+    <a href="#certificationSection" class="sr-only skip-link" tabindex="0" aria-label="Skip to certification">Skip to certification</a>
     <button id="modeToggle" aria-label="Toggle light/dark mode">
       Light Mode
     </button>
     <button id="langToggle" aria-label="Toggle language">SV</button>
     <div class="layout" aria-live="polite">
-      <aside class="sidebar" aria-label="Sidebar">
+      <aside class="sidebar" id="sidebar" role="complementary" aria-label="Sidebar">
         <img
           src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg"
           alt="Hanif Bahari portrait"
           class="profile-img"
         />
-        <div class="sidebar-section" aria-labelledby="sidebar-contact-title">
+        <div class="sidebar-section" aria-labelledby="sidebar-contact-title" role="region" aria-label="Contact section">
           <div class="sidebar-title" id="sidebar-contact-title" tabindex="0">
             Contact
           </div>
@@ -505,7 +504,7 @@
             </div>
           </div>
         </div>
-        <div class="sidebar-section" aria-labelledby="sidebar-skills-title">
+        <div class="sidebar-section" aria-labelledby="sidebar-skills-title" role="region" aria-label="Skills section">
           <div class="sidebar-title" id="sidebar-skills-title" tabindex="0">
             Skills
           </div>
@@ -513,7 +512,7 @@
             <div class="skill-list" id="skillList"></div>
           </div>
         </div>
-        <div class="sidebar-section" aria-labelledby="sidebar-languages-title">
+        <div class="sidebar-section" aria-labelledby="sidebar-languages-title" role="region" aria-label="Languages section">
           <div class="sidebar-title" id="sidebar-languages-title" tabindex="0">
             Languages
           </div>
@@ -522,7 +521,7 @@
           </div>
         </div>
       </aside>
-      <main class="main" id="main-content">
+      <main class="main" id="main-content" role="main" aria-label="Main content">
         <div id="cv-en" role="region" aria-label="English CV">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
@@ -531,12 +530,7 @@
               Web Designer
             </div>
           </div>
-          <section
-            class="profile section-block"
-            id="profileSection"
-            aria-labelledby="profileSection-title"
-            tabindex="-1"
-          >
+          <section class="profile section-block" id="profileSection" aria-labelledby="profileSection-title" tabindex="-1" role="region" aria-label="Summary section">
             <div class="section-title" id="profileSection-title">Summary</div>
             <div>
               I am a Fullstack Web Developer and Web Designer with expertise in
@@ -550,11 +544,11 @@
               robust and aesthetically refined.
             </div>
           </section>
-          <div class="experience section-block" id="experienceSection">
+          <div class="experience section-block" id="experienceSection" role="region" aria-label="Experience section">
             <div class="section-title">Experience</div>
             <div id="expList-en"></div>
           </div>
-          <div class="profile section-block visible" id="educationSection">
+          <div class="profile section-block visible" id="educationSection" role="region" aria-label="Education section">
             <div class="section-title">Education</div>
             <div>
               <div>
@@ -573,11 +567,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="profile section-block"
-            style="margin-bottom: 24px"
-            id="certificationSection"
-          >
+          <div class="profile section-block" style="margin-bottom: 24px" id="certificationSection" role="region" aria-label="Certification section">
             <div class="section-title">Certification</div>
             <div>
               UX Design: From Concept to Wireframe - University of Michigan<br /><a
@@ -591,12 +581,7 @@
             </div>
           </div>
         </div>
-        <div
-          id="cv-sv"
-          style="display: none"
-          role="region"
-          aria-label="Swedish CV"
-        >
+        <div id="cv-sv" style="display: none" role="region" aria-label="Swedish CV">
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
             <div class="role">
@@ -604,7 +589,7 @@
               Webbdesigner
             </div>
           </div>
-          <div class="profile section-block" id="profileSection-sv">
+          <div class="profile section-block" id="profileSection-sv" role="region" aria-label="Sammanfattning section">
             <div class="section-title">Sammanfattning</div>
             <div>
               Jag är en fullstack webbutvecklare och webbdesigner med expertis
@@ -618,11 +603,11 @@
               som är både tekniskt robusta och estetiskt förfinade.
             </div>
           </div>
-          <div class="experience section-block" id="experienceSection-sv">
+          <div class="experience section-block" id="experienceSection-sv" role="region" aria-label="Erfarenhet section">
             <div class="section-title">Erfarenhet</div>
             <div id="expList-sv"></div>
           </div>
-          <div class="profile section-block visible" id="educationSection-sv">
+          <div class="profile section-block visible" id="educationSection-sv" role="region" aria-label="Utbildning section">
             <div class="section-title">Utbildning</div>
             <div>
               <div>
@@ -640,13 +625,7 @@
               </div>
             </div>
           </div>
-          <section
-            class="profile section-block"
-            style="margin-bottom: 24px"
-            id="certificationSection-sv"
-            aria-labelledby="certificationSection-sv-title"
-            tabindex="-1"
-          >
+          <section class="profile section-block" style="margin-bottom: 24px" id="certificationSection-sv" aria-labelledby="certificationSection-sv-title" tabindex="-1" role="region" aria-label="Certifiering section">
             <div class="section-title" id="certificationSection-sv-title">
               Certifiering
             </div>
