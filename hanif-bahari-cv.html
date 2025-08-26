@@ -290,6 +290,7 @@
 
   <body>
     <button id="modeToggle" style="position:fixed;top:24px;right:24px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:var(--second-accent-color);color:var(--bg);font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">Light Mode</button>
+    <button id="langToggle" style="position:fixed;top:24px;right:140px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:var(--second-accent-color);color:var(--bg);font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">SV</button>
     <div class="layout">
       <aside class="sidebar">
         <img src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg" alt="Hanif Bahari" class="profile-img" />
@@ -306,7 +307,6 @@
             </div>
           </div>
         </div>
-        
         <div class="sidebar-section">
           <div class="sidebar-title">Skills</div>
           <div class="sidebar-content">
@@ -354,85 +354,160 @@
         </div>
       </aside>
       <main class="main">
-        <div class="header-main">
-          <div class="name">Hanif Bahari</div>
-          <div class="role">Fullstack Web Developer <br> Web Designer</div>
+        <div id="cv-en">
+          <div class="header-main">
+            <div class="name">Hanif Bahari</div>
+            <div class="role">Fullstack Web Developer <br> Web Designer</div>
+          </div>
+          <div class="profile" id="profileSection">
+            <div class="section-title">Summary</div>
+            <div>I am a Fullstack Web Developer and Web Designer with expertise in React, JavaScript, TypeScript, and Node.js. I build dynamic, scalable applications while ensuring they are visually engaging, responsive, and user-friendly. Skilled in both coding and design tools such as Figma, Photoshop, and Illustrator, I deliver end-to-end solutions that balance performance with modern UI/UX principles. My combined background in development and design enables me to create digital experiences that are technically robust and aesthetically refined.</div>
+          </div>
+          <div class="experience" id="experienceSection">
+            <div class="section-title">Experience</div>
+            <div class="exp-item">
+              <div class="exp-date">2025 Jan - June</div>
+              <div class="exp-role">Fullstack Developer</div>
+              <div class="exp-company">KTH Royal Institute of Technology</div>
+              <div class="exp-desc">Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2022 - Ongoing</div>
+              <div class="exp-role">Frontend Developer - Core team (Bazarma)</div>
+              <div class="exp-company">Bazarma</div>
+              <div class="exp-desc">Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2024</div>
+              <div class="exp-role">Web Developer</div>
+              <div class="exp-company">Byn Kommunikationsbyrå AB</div>
+              <div class="exp-desc">Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2023 - 2024</div>
+              <div class="exp-role">Web Developer</div>
+              <div class="exp-company">Falck & Co</div>
+              <div class="exp-desc">Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2017 - 2020</div>
+              <div class="exp-role">Indie Game Developer | Creator of Uncle Magnuz</div>
+              <div class="exp-company">Self Employed</div>
+              <div class="exp-desc">Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2018 - 2019</div>
+              <div class="exp-role">User Experience Designer</div>
+              <div class="exp-company">VE AND VILE</div>
+              <div class="exp-desc">UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.</div>
+            </div>
+          </div>
+          <div class="profile visible" id="educationSection">
+            <div class="section-title">Education</div>
+            <div>
+              <div>2021 - 2023<br><span>Frontend Development, Nackademin</span></div>
+              <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industrial Design / Design For ALL, Mid Sweden University</span></div>
+              <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industrial Design, Azad University (IAU)</span></div>
+            </div>
+          </div>
+          <div class="profile" style="margin-bottom:24px;" id="certificationSection">
+            <div class="section-title">Certification</div>
+            <div>UX Design: From Concept to Wireframe - University of Michigan<br><a id="certificate-link-button" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certificate Link</a></div>
+          </div>
         </div>
-        <div class="profile" id="profileSection">
-          <div class="section-title">Summary</div>
-          <div>I am a Fullstack Web Developer and Web Designer with expertise in React, JavaScript, TypeScript, and Node.js. I build dynamic, scalable applications while ensuring they are visually engaging, responsive, and user-friendly. Skilled in both coding and design tools such as Figma, Photoshop, and Illustrator, I deliver end-to-end solutions that balance performance with modern UI/UX principles. My combined background in development and design enables me to create digital experiences that are technically robust and aesthetically refined.</div>
-        </div>
-        <div class="experience" id="experienceSection">
-          <div class="section-title">Experience</div>
-          <div class="exp-item">
-            <div class="exp-date">2025 Jan - June</div>
-            <div class="exp-role">Fullstack Developer</div>
-            <div class="exp-company">KTH Royal Institute of Technology</div>
-            <div class="exp-desc">Developed hybrid Node.js + React apps using TypeScript, integrating frontend and backend features. Maintained 30+ Node.js applications in a multi-repo setup, focusing on performance and scalability. Implemented i18n in React apps to support multilingual user interfaces for a global audience. Built the new WordPress theme for KTH blogs with custom components and integrated it with Polopoly CMS and the KTH Design System. Contributed to the KTH Public Design System (monorepo), ensuring consistent UI across platforms. Created fast, SEO-friendly documentation sites for the design system using Astro, improving public accessibility and developer experience.</div>
+        <div id="cv-sv" style="display:none;">
+          <div class="header-main">
+            <div class="name">Hanif Bahari</div>
+            <div class="role">Fullstack Webbutvecklare <br> Webbdesigner</div>
           </div>
-          <div class="exp-item">
-            <div class="exp-date">2022 - Ongoing</div>
-            <div class="exp-role">Frontend Developer - Core team (Bazarma)</div>
-            <div class="exp-company">Bazarma</div>
-            <div class="exp-desc">Refactored legacy React class components to functional ones for improved efficiency and maintainability. Implemented Redux for consistent and reliable state management. Led the website redesign to enhance user experience and follow modern design trends. Developed and refined a cohesive design system for consistency and streamlined development. Wrote unit and integration tests with Jest and end-to-end tests with Cypress to ensure code quality and reliability. Integrated Sentry for real-time error tracking and debugging, Google Analytics 4 (GA4) for user behavior insights, and Google Tag Manager (GTM) for efficient tag management and marketing tracking without codebase changes.</div>
+          <div class="profile" id="profileSection-sv">
+            <div class="section-title">Sammanfattning</div>
+            <div>Jag är en fullstack webbutvecklare och webbdesigner med expertis inom React, JavaScript, TypeScript och Node.js. Jag bygger dynamiska, skalbara applikationer och ser till att de är visuellt tilltalande, responsiva och användarvänliga. Med färdigheter i både kodning och designverktyg som Figma, Photoshop och Illustrator levererar jag helhetslösningar som balanserar prestanda med modern UI/UX. Min kombinerade bakgrund inom utveckling och design gör att jag kan skapa digitala upplevelser som är både tekniskt robusta och estetiskt förfinade.</div>
           </div>
-          <div class="exp-item">
-            <div class="exp-date">2024</div>
-            <div class="exp-role">Web Developer</div>
-            <div class="exp-company">Byn Kommunikationsbyrå AB</div>
-            <div class="exp-desc">Oversaw the development process, collaborating closely with designers. Skilled in deploying websites using FTP tools, ensuring seamless launches. Implemented on-page SEO strategies for improved visibility and rankings. Implemented best practices for a secure, high-performing user experience.</div>
+          <div class="experience" id="experienceSection-sv">
+            <div class="section-title">Erfarenhet</div>
+            <div class="exp-item">
+              <div class="exp-date">2025 Jan - Juni</div>
+              <div class="exp-role">Fullstackutvecklare</div>
+              <div class="exp-company">KTH Kungliga Tekniska Högskolan</div>
+              <div class="exp-desc">Utvecklade hybrida Node.js + React-appar med TypeScript, integrerade frontend- och backendfunktioner. Underhöll 30+ Node.js-applikationer i en multi-repo-miljö med fokus på prestanda och skalbarhet. Implementerade i18n i React-appar för att stödja flerspråkiga användargränssnitt för en global publik. Byggde det nya WordPress-temat för KTH-bloggar med egna komponenter och integrerade det med Polopoly CMS och KTH Design System. Bidrog till KTH Public Design System (monorepo) för att säkerställa enhetlig UI över plattformar. Skapade snabba, SEO-vänliga dokumentationssajter för design-systemet med Astro, vilket förbättrade tillgänglighet och utvecklarupplevelse.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2022 - Pågående</div>
+              <div class="exp-role">Frontendutvecklare - Core team (Bazarma)</div>
+              <div class="exp-company">Bazarma</div>
+              <div class="exp-desc">Refaktorerade äldre React-klasskomponenter till funktionella komponenter för bättre effektivitet och underhåll. Implementerade Redux för konsekvent och tillförlitlig state management. Ledde webbplatsens redesign för förbättrad användarupplevelse och modern design. Utvecklade och förfinade ett sammanhängande designsystem för konsistens och effektiv utveckling. Skrev enhetstester och integrationstester med Jest samt end-to-end-tester med Cypress för att säkerställa kodkvalitet och tillförlitlighet. Integrerade Sentry för realtidsfelspårning och debugging, Google Analytics 4 (GA4) för användarinsikter och Google Tag Manager (GTM) för effektiv tagghantering och marknadsföringsspårning utan kodändringar.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2024</div>
+              <div class="exp-role">Webbutvecklare</div>
+              <div class="exp-company">Byn Kommunikationsbyrå AB</div>
+              <div class="exp-desc">Övervakade utvecklingsprocessen och samarbetade nära med designers. Skicklig på att lansera webbplatser med FTP-verktyg för smidiga lanseringar. Implementerade SEO-strategier för bättre synlighet och ranking. Implementerade bästa praxis för en säker och högpresterande användarupplevelse.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2023 - 2024</div>
+              <div class="exp-role">Webbutvecklare</div>
+              <div class="exp-company">Falck & Co</div>
+              <div class="exp-desc">Behärskade hela WordPress-stacken, inklusive frontend, backend och lansering via FTP-verktyg. Specialiserad på att skapa egna plugins, teman och funktioner i JavaScript och PHP. Erfarenhet av HTML, CSS, JavaScript och PHP för komplett WordPress-utveckling. Stor erfarenhet av att skapa skräddarsydda lösningar för att förbättra webbplatsens funktionalitet och estetik.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2017 - 2020</div>
+              <div class="exp-role">Indie Spelutvecklare | Skapare av Uncle Magnuz</div>
+              <div class="exp-company">Egenföretagare</div>
+              <div class="exp-desc">Konceptualiserade, designade och utvecklade "Uncle Magnuz", ett plattformsspel för iPhone. Skapade hela spelet från idé till lansering på iTunes. Visade skicklighet inom spelutveckling, inklusive programmering och grafik. Skapade och animerade allt material själv. Lanserade spelet på iTunes med positiv feedback.</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-date">2018 - 2019</div>
+              <div class="exp-role">UX Designer</div>
+              <div class="exp-company">VE AND VILE</div>
+              <div class="exp-desc">UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.</div>
+            </div>
           </div>
-          <div class="exp-item">
-            <div class="exp-date">2023 - 2024</div>
-            <div class="exp-role">Web Developer</div>
-            <div class="exp-company">Falck & Co</div>
-            <div class="exp-desc">Excelled in the complete WordPress stack, encompassing frontend, backend, and deployment via FTP tools. Specialized in crafting custom plugins, themes, and functions in JavaScript and PHP. Proficient in HTML, CSS, JavaScript, and PHP for end-to-end WordPress development. Extensive experience in creating tailored solutions to enhance website functionality and aesthetics.</div>
+          <div class="profile visible" id="educationSection-sv">
+            <div class="section-title">Utbildning</div>
+            <div>
+              <div>2021 - 2023<br><span>Frontendutveckling, Nackademin</span></div>
+              <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industridesign / Design For ALL, Mittuniversitetet</span></div>
+              <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industridesign, Azad University (IAU)</span></div>
+            </div>
           </div>
-          <div class="exp-item">
-            <div class="exp-date">2017 - 2020</div>
-            <div class="exp-role">Indie Game Developer | Creator of Uncle Magnuz</div>
-            <div class="exp-company">Self Employed</div>
-            <div class="exp-desc">Conceived, designed, and developed "Uncle Magnuz," a captivating platformer game for iPhone. Crafted the entire game, from concept to deployment on iTunes. Showcased proficiency in game development, encompassing everything from programming and artwork creation to animations. Conceptualized and executed the entire project from scratch, showcasing strong end-to-end development skills. Utilized vanilla JavaScript to create engaging gameplay mechanics and user interfaces. Crafted all artwork and animations, demonstrating a versatile skill set in both coding and visual design. Successfully deployed the game on iTunes, garnering positive feedback.</div>
+          <div class="profile" style="margin-bottom:24px;" id="certificationSection-sv">
+            <div class="section-title">Certifiering</div>
+            <div>UX Design: Från Koncept till Wireframe - University of Michigan<br><a id="certificate-link-button-sv" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certifikat Länk</a></div>
           </div>
-          <div class="exp-item">
-            <div class="exp-date">2018 - 2019</div>
-            <div class="exp-role">User Experience Designer</div>
-            <div class="exp-company">VE AND VILE</div>
-            <div class="exp-desc">UI/UX Design of website and application. Provided input on the existing design. Tested application and website to find improvements and bugs.</div>
-          </div>
-        </div>
-        <div class="profile visible" id="educationSection">
-          <div class="section-title">Education</div>
-          <div>
-            <div>2021 - 2023<br><span>Frontend Development, Nackademin</span></div>
-            <div style="margin-top:10px;">2015 - 2017<br><span>MA, Industrial Design / Design For ALL, Mid Sweden University</span></div>
-            <div style="margin-top:10px;">2001 - 2007<br><span>BA, Industrial Design, Azad University (IAU)</span></div>
-          </div>
-        </div>
-        <div class="profile" style="margin-bottom:24px;" id="certificationSection">
-          <div class="section-title">Certification</div>
-          <div>UX Design: From Concept to Wireframe - University of Michigan<br><a id="certificate-link-button" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certificate Link</a></div>
         </div>
       </main>
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        ["profileSection", "experienceSection", "skillsSection", "certificationSection"].forEach(function(id, i) {
+        function animateSkillBars(skillList) {
+          skillList.querySelectorAll('.skill-item').forEach(function(item, idx) {
+            var bar = item.querySelector('.lightning-bar');
+            var level = parseInt(item.getAttribute('data-level'), 10) || 3;
+            var width = level * 18;
+            bar.style.width = '0px';
+            bar.style.opacity = '1';
+            setTimeout(function() {
+              bar.style.width = width + 'px';
+              bar.classList.add('visible');
+            }, 600 + idx * 220);
+          });
+        }
+        // Animate sidebar skill bars on load
+        var sidebarSkillList = document.querySelector('.sidebar .skill-list');
+        if (sidebarSkillList) animateSkillBars(sidebarSkillList);
+        // Section fade-in for both languages
+        ["profileSection", "experienceSection", "skillsSection", "certificationSection", "educationSection"].forEach(function(id, i) {
           setTimeout(function() {
             var el = document.getElementById(id);
             if (el) el.classList.add('visible');
           }, 300 + i * 250);
         });
-        document.querySelectorAll('.skill-item').forEach(function(item, idx) {
-          var bar = item.querySelector('.lightning-bar');
-          var level = parseInt(item.getAttribute('data-level'), 10) || 3;
-          var width = level * 18;
-          bar.style.width = '0px';
-          bar.style.opacity = '1';
+        ["profileSection-sv", "experienceSection-sv", "skillsSection", "certificationSection-sv", "educationSection-sv"].forEach(function(id, i) {
           setTimeout(function() {
-            bar.style.width = width + 'px';
-            bar.classList.add('visible');
-          }, 600 + idx * 220);
+            var el = document.getElementById(id);
+            if (el) el.classList.add('visible');
+          }, 300 + i * 250);
         });
       });
       // Dark/light mode toggle
@@ -446,6 +521,18 @@
       document.getElementById('modeToggle').onclick = function() {
         mode = mode === 'dark' ? 'light' : 'dark';
         setMode(mode);
+      };
+      // Language toggle
+      var lang = 'en';
+      function setLang(l) {
+        document.getElementById('cv-en').style.display = l === 'en' ? '' : 'none';
+        document.getElementById('cv-sv').style.display = l === 'sv' ? '' : 'none';
+        document.getElementById('langToggle').textContent = l === 'en' ? 'SV' : 'EN';
+      }
+      setLang('en');
+      document.getElementById('langToggle').onclick = function() {
+        lang = lang === 'en' ? 'sv' : 'en';
+        setLang(lang);
       };
     </script>
   </body>
