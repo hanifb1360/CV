@@ -249,7 +249,16 @@
         text-shadow: none;
         font-family: var(--font-text);
         position: relative;
+        outline: none;
+        cursor: pointer;
+        /* Make skill items focusable for keyboard navigation */
+        /* Accessibility: visually indicate focus */
+        transition: box-shadow 0.2s;
       }
+      .skill-item:focus {
+        box-shadow: 0 0 0 2px var(--accent-color);
+      }
+
       .skill-lightning {
         display: flex;
         align-items: center;
@@ -517,7 +526,12 @@
               Web Designer
             </div>
           </div>
-          <section class="profile section-block" id="profileSection" aria-labelledby="profileSection-title" tabindex="-1">
+          <section
+            class="profile section-block"
+            id="profileSection"
+            aria-labelledby="profileSection-title"
+            tabindex="-1"
+          >
             <div class="section-title" id="profileSection-title">Summary</div>
             <div>
               I am a Fullstack Web Developer and Web Designer with expertise in
@@ -572,7 +586,12 @@
             </div>
           </div>
         </div>
-        <div id="cv-sv" style="display: none" role="region" aria-label="Swedish CV">
+        <div
+          id="cv-sv"
+          style="display: none"
+          role="region"
+          aria-label="Swedish CV"
+        >
           <div class="header-main">
             <div class="name">Hanif Bahari</div>
             <div class="role">
@@ -623,7 +642,9 @@
             aria-labelledby="certificationSection-sv-title"
             tabindex="-1"
           >
-            <div class="section-title" id="certificationSection-sv-title">Certifiering</div>
+            <div class="section-title" id="certificationSection-sv-title">
+              Certifiering
+            </div>
             <div>
               UX Design: Från Koncept till Wireframe - University of Michigan<br /><a
                 id="certificate-link-button-sv"
@@ -693,23 +714,32 @@
         if (skillListEl) {
           skillListEl.innerHTML = skills
             .map(function (skill) {
-              return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
+              return `<div class="skill-item" data-level="${skill.level}" tabindex="0" role="listitem" aria-label="${skill.name}, skill level ${skill.level} out of 5">${skill.name} <span class="skill-lightning"><span class="lightning-bar" aria-hidden="true"></span></span></div>`;
             })
             .join("");
           animateSkillBars(skillListEl);
         }
       }
       function animateSkillBars(skillList) {
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
         skillList.querySelectorAll(".skill-item").forEach(function (item, idx) {
           var bar = item.querySelector(".lightning-bar");
           var level = parseInt(item.getAttribute("data-level"), 10) || 3;
           var width = level * 18;
           bar.style.width = "0px";
           bar.style.opacity = "1";
-          setTimeout(function () {
+          if (prefersReducedMotion) {
+            bar.style.transition = "none";
             bar.style.width = width + "px";
             bar.classList.add("visible");
-          }, 600 + idx * 220);
+          } else {
+            setTimeout(function () {
+              bar.style.width = width + "px";
+              bar.classList.add("visible");
+            }, 600 + idx * 220);
+          }
         });
       }
 
