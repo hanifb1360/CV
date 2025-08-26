@@ -13,10 +13,49 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
     <style>
+      /* -------------------
+         VARIABLES & ROOT
+      ------------------- */
       :root {
         --font-title: "Lexend Deca", Arial, sans-serif;
         --font-text: "DM Sans", Arial, sans-serif;
       }
+      :root.dark {
+        --bg: #16171c;
+        --accent-color: #66c9ff;
+        --second-accent-color: #f7c948;
+        --third-accent-color: #48f7e3;
+        --container-bg: #1c1e26;
+        --text: #f8f9fa;
+        --sidebar-bg: #23263a;
+        --sidebar-text: #f8f9fa;
+        --main-bg: #16171c;
+        --main-text: #f8f9fa;
+        --name-color: #66c9ff;
+        --role-color: #f8f9fa;
+        --profile-bg: #23263a;
+        --profile-text: #f8f9fa;
+      }
+      :root.light {
+        --bg: #f4f4f4;
+        --accent-color: #0c5075;
+        --second-accent-color: #39727d;
+        --third-accent-color: #15796d;
+        --container-bg: #fff;
+        --text: #23263a;
+        --sidebar-bg: #f0f0f0;
+        --sidebar-text: #23263a;
+        --main-bg: #fff;
+        --main-text: #23263a;
+        --name-color: #39727d;
+        --role-color: #23263a;
+        --profile-bg: #f0f0f0;
+        --profile-text: #23263a;
+      }
+
+      /* -------------------
+         LAYOUT
+      ------------------- */
       body {
         font-family: var(--font-text);
         background: var(--bg);
@@ -34,6 +73,10 @@
         background: var(--container-bg, #1c1e26);
         overflow: hidden;
       }
+
+      /* -------------------
+         SIDEBAR
+      ------------------- */
       .sidebar {
         background: var(--sidebar-bg);
         color: var(--sidebar-text);
@@ -72,6 +115,9 @@
         font-family: var(--font-text);
       }
 
+      /* -------------------
+         MAIN CONTENT
+      ------------------- */
       .main {
         flex: 1 1 0%;
         min-width: 0;
@@ -113,6 +159,10 @@
         text-shadow: 0 1px 0 var(--sidebar-bg);
         font-family: var(--font-title);
       }
+
+      /* -------------------
+         PROFILE & EXPERIENCE
+      ------------------- */
       .profile {
         color: var(--profile-text);
         transition: background 0.4s, color 0.4s;
@@ -167,6 +217,10 @@
         font-family: var(--font-text);
         margin-bottom: 50px;
       }
+
+      /* -------------------
+         SKILLS
+      ------------------- */
       .skills-main {
         margin-bottom: 24px;
         opacity: 0;
@@ -219,6 +273,9 @@
         opacity: 1;
       }
 
+      /* -------------------
+         BUTTONS
+      ------------------- */
       .link-button {
         display: inline-block;
         margin-top: 6px;
@@ -238,7 +295,6 @@
       .link-button:hover {
         background: var(--accent-color);
       }
-      /* BUTTONS */
       #modeToggle,
       #langToggle {
         position: fixed;
@@ -260,7 +316,14 @@
         top: 24px;
         right: 140px;
       }
-      /* CONTACT ICONS */
+      #certificate-link-button,
+      #certificate-link-button-sv {
+        margin-top: 40px;
+      }
+
+      /* -------------------
+         CONTACT
+      ------------------- */
       .contact-icon {
         margin-right: 8px;
       }
@@ -272,12 +335,10 @@
         display: flex;
         gap: 12px;
       }
-      /* CERTIFICATE BUTTONS */
-      #certificate-link-button,
-      #certificate-link-button-sv {
-        margin-top: 40px;
-      }
 
+      /* -------------------
+         RESPONSIVE
+      ------------------- */
       @media (max-width: 900px) {
         .layout {
           flex-direction: column;
@@ -297,38 +358,6 @@
         .main {
           padding: 18px 6px;
         }
-      }
-      :root.dark {
-        --bg: #16171c;
-        --accent-color: #66c9ff;
-        --second-accent-color: #f7c948;
-        --third-accent-color: #48f7e3;
-        --container-bg: #1c1e26;
-        --text: #f8f9fa;
-        --sidebar-bg: #23263a;
-        --sidebar-text: #f8f9fa;
-        --main-bg: #16171c;
-        --main-text: #f8f9fa;
-        --name-color: #66c9ff;
-        --role-color: #f8f9fa;
-        --profile-bg: #23263a;
-        --profile-text: #f8f9fa;
-      }
-      :root.light {
-        --bg: #f4f4f4;
-        --accent-color: #0c5075;
-        --second-accent-color: #39727d;
-        --third-accent-color: #15796d;
-        --container-bg: #fff;
-        --text: #23263a;
-        --sidebar-bg: #f0f0f0;
-        --sidebar-text: #23263a;
-        --main-bg: #fff;
-        --main-text: #23263a;
-        --name-color: #39727d;
-        --role-color: #23263a;
-        --profile-bg: #f0f0f0;
-        --profile-text: #23263a;
       }
     </style>
   </head>
