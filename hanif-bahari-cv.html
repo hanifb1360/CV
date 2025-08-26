@@ -53,6 +53,24 @@
         --profile-text: #23263a;
       }
 
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+      .profile,
+      .experience,
+      .skills-main {
+        transition: none !important;
+      }
+      #cv-en,
+      #cv-sv {
+        transition: none !important;
+      }
+    }
+
       /* -------------------
          LAYOUT
       ------------------- */
@@ -706,9 +724,7 @@
         }
       }
       function animateSkillBars(skillList) {
-        var prefersReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches;
+        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         skillList.querySelectorAll(".skill-item").forEach(function (item, idx) {
           var bar = item.querySelector(".lightning-bar");
           var level = parseInt(item.getAttribute("data-level"), 10) || 3;
@@ -882,6 +898,7 @@
         renderExperience(l);
         updateSidebar(l);
         // Fade-in animation for sections
+        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         var fadeIds =
           l === "en"
             ? [
@@ -902,9 +919,13 @@
           var el = document.getElementById(id);
           if (el) {
             el.classList.remove("visible");
-            setTimeout(function () {
+            if (prefersReducedMotion) {
               el.classList.add("visible");
-            }, 100 + i * 180);
+            } else {
+              setTimeout(function () {
+                el.classList.add("visible");
+              }, 100 + i * 180);
+            }
           }
         });
       }
@@ -944,6 +965,7 @@
           }
         };
         // Section fade-in for both languages (initial)
+        var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         [
           "profileSection",
           "experienceSection",
@@ -951,10 +973,15 @@
           "certificationSection",
           "educationSection",
         ].forEach(function (id, i) {
-          setTimeout(function () {
+          if (prefersReducedMotion) {
             var el = document.getElementById(id);
             if (el) el.classList.add("visible");
-          }, 300 + i * 250);
+          } else {
+            setTimeout(function () {
+              var el = document.getElementById(id);
+              if (el) el.classList.add("visible");
+            }, 300 + i * 250);
+          }
         });
         [
           "profileSection-sv",
@@ -963,10 +990,15 @@
           "certificationSection-sv",
           "educationSection-sv",
         ].forEach(function (id, i) {
-          setTimeout(function () {
+          if (prefersReducedMotion) {
             var el = document.getElementById(id);
             if (el) el.classList.add("visible");
-          }, 300 + i * 250);
+          } else {
+            setTimeout(function () {
+              var el = document.getElementById(id);
+              if (el) el.classList.add("visible");
+            }, 300 + i * 250);
+          }
         });
 
         // -------------------
