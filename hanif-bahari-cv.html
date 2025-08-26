@@ -531,7 +531,9 @@
       </main>
     </div>
     <script>
-      // Skills data with levels (1-5)
+      // -------------------
+      // SKILLS SECTION
+      // -------------------
       var skills = [
         { name: "JavaScript", level: 4 },
         { name: "TypeScript", level: 4 },
@@ -578,10 +580,38 @@
         { name: "UI/UX Design", level: 5 },
         { name: "Game Development", level: 4 },
       ];
-      document.addEventListener("DOMContentLoaded", function () {
-        // Experience data in English and Swedish
-        var experiences = [
-          {
+      function renderSkills() {
+        var skillListEl = document.getElementById("skillList");
+        if (skillListEl) {
+          skillListEl.innerHTML = skills
+            .map(function (skill) {
+              return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
+            })
+            .join("");
+          animateSkillBars(skillListEl);
+        }
+      }
+      function animateSkillBars(skillList) {
+        skillList
+          .querySelectorAll(".skill-item")
+          .forEach(function (item, idx) {
+            var bar = item.querySelector(".lightning-bar");
+            var level = parseInt(item.getAttribute("data-level"), 10) || 3;
+            var width = level * 18;
+            bar.style.width = "0px";
+            bar.style.opacity = "1";
+            setTimeout(function () {
+              bar.style.width = width + "px";
+              bar.classList.add("visible");
+            }, 600 + idx * 220);
+          });
+      }
+
+      // -------------------
+      // EXPERIENCE SECTION
+      // -------------------
+      var experiences = [
+        {
             dateEn: "2025 Jan - June",
             roleEn: "Fullstack Developer",
             companyEn: "KTH Royal Institute of Technology",
@@ -653,179 +683,115 @@
             descSv:
               "UI/UX-design av webbplats och applikation. Gav input på befintlig design. Testade applikation och webbplats för att hitta förbättringar och buggar.",
           },
-        ];
-
-        // Render skills
-        var skillListEl = document.getElementById("skillList");
-        if (skillListEl) {
-          skillListEl.innerHTML = skills
-            .map(function (skill) {
-              return `<div class="skill-item" data-level="${skill.level}">${skill.name} <span class="skill-lightning"><span class="lightning-bar"></span></span></div>`;
+      ];
+      function renderExperience(lang) {
+        var expListEn = document.getElementById("expList-en");
+        var expListSv = document.getElementById("expList-sv");
+        if (expListEn) {
+          expListEn.innerHTML = experiences
+            .map(function (exp) {
+              return `<div class='exp-item'><div class='exp-date'>${exp.dateEn}</div><div class='exp-role'>${exp.roleEn}</div><div class='exp-company'>${exp.companyEn}</div><div class='exp-desc'>${exp.descEn}</div></div>`;
             })
             .join("");
         }
-
-        // Render experience blocks
-        function renderExperience(lang) {
-          var expListEn = document.getElementById("expList-en");
-          var expListSv = document.getElementById("expList-sv");
-          if (expListEn) {
-            expListEn.innerHTML = experiences
-              .map(function (exp) {
-                return `<div class='exp-item'><div class='exp-date'>${exp.dateEn}</div><div class='exp-role'>${exp.roleEn}</div><div class='exp-company'>${exp.companyEn}</div><div class='exp-desc'>${exp.descEn}</div></div>`;
-              })
-              .join("");
-          }
-          if (expListSv) {
-            expListSv.innerHTML = experiences
-              .map(function (exp) {
-                return `<div class='exp-item'><div class='exp-date'>${exp.dateSv}</div><div class='exp-role'>${exp.roleSv}</div><div class='exp-company'>${exp.companySv}</div><div class='exp-desc'>${exp.descSv}</div></div>`;
-              })
-              .join("");
-          }
+        if (expListSv) {
+          expListSv.innerHTML = experiences
+            .map(function (exp) {
+              return `<div class='exp-item'><div class='exp-date'>${exp.dateSv}</div><div class='exp-role'>${exp.roleSv}</div><div class='exp-company'>${exp.companySv}</div><div class='exp-desc'>${exp.descSv}</div></div>`;
+            })
+            .join("");
         }
+      }
 
-        // Initial render
+      // -------------------
+      // SIDEBAR SECTION
+      // -------------------
+      var sidebarTitles = {
+        en: {
+          contact: "Contact",
+          skills: "Skills",
+          languages: "Languages"
+        },
+        sv: {
+          contact: "Kontakt",
+          skills: "Färdigheter",
+          languages: "Språk"
+        }
+      };
+      var sidebarLanguagesContent = {
+        en: "<span>Persian</span>, <span>English</span>, <span>Swedish</span>",
+        sv: "<span>Persiska</span>, <span>Engelska</span>, <span>Svenska</span>"
+      };
+      function updateSidebar(lang) {
+        document.getElementById("sidebar-contact-title").textContent = sidebarTitles[lang].contact;
+        document.getElementById("sidebar-skills-title").textContent = sidebarTitles[lang].skills;
+        document.getElementById("sidebar-languages-title").textContent = sidebarTitles[lang].languages;
+        document.getElementById("sidebar-languages-content").innerHTML = sidebarLanguagesContent[lang];
+      }
+
+      // -------------------
+      // MODE & LANGUAGE TOGGLE
+      // -------------------
+      var mode = "dark";
+      function setMode(m) {
+        document.documentElement.classList.remove("dark", "light");
+        document.documentElement.classList.add(m);
+        document.getElementById("modeToggle").textContent =
+          m === "dark" ? "Light Mode" : "Dark Mode";
+      }
+      var lang = "en";
+      function setLang(l) {
+        document.getElementById("cv-en").style.display =
+          l === "en" ? "" : "none";
+        document.getElementById("cv-sv").style.display =
+          l === "sv" ? "" : "none";
+        document.getElementById("langToggle").textContent =
+          l === "en" ? "SV" : "EN";
+        renderExperience(l);
+        updateSidebar(l);
+        // Fade-in animation for sections
+        if (l === "en") {
+          [
+            "profileSection",
+            "experienceSection",
+            "skillsSection",
+            "certificationSection",
+            "educationSection",
+          ].forEach(function (id, i) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add("visible");
+          });
+        } else {
+          [
+            "profileSection-sv",
+            "experienceSection-sv",
+            "skillsSection",
+            "certificationSection-sv",
+            "educationSection-sv",
+          ].forEach(function (id, i) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add("visible");
+          });
+        }
+      }
+
+      // -------------------
+      // INITIALIZATION
+      // -------------------
+      document.addEventListener("DOMContentLoaded", function () {
+        renderSkills();
         renderExperience("en");
-
-        function animateSkillBars(skillList) {
-          skillList
-            .querySelectorAll(".skill-item")
-            .forEach(function (item, idx) {
-              var bar = item.querySelector(".lightning-bar");
-              var level = parseInt(item.getAttribute("data-level"), 10) || 3;
-              var width = level * 18;
-              bar.style.width = "0px";
-              bar.style.opacity = "1";
-              setTimeout(function () {
-                bar.style.width = width + "px";
-                bar.classList.add("visible");
-              }, 600 + idx * 220);
-            });
-        }
-        // Animate sidebar skill bars on load
-        if (skillListEl) animateSkillBars(skillListEl);
-        // Section fade-in for both languages
-        [
-          "profileSection",
-          "experienceSection",
-          "skillsSection",
-          "certificationSection",
-          "educationSection",
-        ].forEach(function (id, i) {
-          setTimeout(function () {
-            var el = document.getElementById(id);
-            if (el) el.classList.add("visible");
-          }, 300 + i * 250);
-        });
-        [
-          "profileSection-sv",
-          "experienceSection-sv",
-          "skillsSection",
-          "certificationSection-sv",
-          "educationSection-sv",
-        ].forEach(function (id, i) {
-          setTimeout(function () {
-            var el = document.getElementById(id);
-            if (el) el.classList.add("visible");
-          }, 300 + i * 250);
-        });
-
-        // Dark/light mode toggle
-        var mode = "dark";
-        function setMode(m) {
-          document.documentElement.classList.remove("dark", "light");
-          document.documentElement.classList.add(m);
-          document.getElementById("modeToggle").textContent =
-            m === "dark" ? "Light Mode" : "Dark Mode";
-        }
         setMode("dark");
+        setLang("en");
         document.getElementById("modeToggle").onclick = function () {
           mode = mode === "dark" ? "light" : "dark";
           setMode(mode);
         };
-
-        // Language toggle
-        var lang = "en";
-        var sidebarTitles = {
-          en: {
-            contact: "Contact",
-            skills: "Skills",
-            languages: "Languages"
-          },
-          sv: {
-            contact: "Kontakt",
-            skills: "Färdigheter",
-            languages: "Språk"
-          }
-        };
-        var sidebarLanguagesContent = {
-          en: "<span>Persian</span>, <span>English</span>, <span>Swedish</span>",
-          sv: "<span>Persiska</span>, <span>Engelska</span>, <span>Svenska</span>"
-        };
-        function setLang(l) {
-          document.getElementById("cv-en").style.display =
-            l === "en" ? "" : "none";
-          document.getElementById("cv-sv").style.display =
-            l === "sv" ? "" : "none";
-          document.getElementById("langToggle").textContent =
-            l === "en" ? "SV" : "EN";
-          renderExperience(l);
-          // Sidebar section titles
-          document.getElementById("sidebar-contact-title").textContent = sidebarTitles[l].contact;
-          document.getElementById("sidebar-skills-title").textContent = sidebarTitles[l].skills;
-          document.getElementById("sidebar-languages-title").textContent = sidebarTitles[l].languages;
-          // Sidebar languages content
-          document.getElementById("sidebar-languages-content").innerHTML = sidebarLanguagesContent[l];
-          // Fade-in animation for sections
-          if (l === "en") {
-            [
-              "profileSection",
-              "experienceSection",
-              "skillsSection",
-              "certificationSection",
-              "educationSection",
-            ].forEach(function (id, i) {
-              var el = document.getElementById(id);
-              if (el) el.classList.add("visible");
-            });
-          } else {
-            [
-              "profileSection-sv",
-              "experienceSection-sv",
-              "skillsSection",
-              "certificationSection-sv",
-              "educationSection-sv",
-            ].forEach(function (id, i) {
-              var el = document.getElementById(id);
-              if (el) el.classList.add("visible");
-            });
-          }
-        }
-        setLang("en");
         document.getElementById("langToggle").onclick = function () {
           lang = lang === "en" ? "sv" : "en";
           setLang(lang);
         };
-
-        function animateSkillBars(skillList) {
-          skillList
-            .querySelectorAll(".skill-item")
-            .forEach(function (item, idx) {
-              var bar = item.querySelector(".lightning-bar");
-              var level = parseInt(item.getAttribute("data-level"), 10) || 3;
-              var width = level * 18;
-              bar.style.width = "0px";
-              bar.style.opacity = "1";
-              setTimeout(function () {
-                bar.style.width = width + "px";
-                bar.classList.add("visible");
-              }, 600 + idx * 220);
-            });
-        }
-        // Animate sidebar skill bars on load
-        if (skillListEl) animateSkillBars(skillListEl);
-        // Section fade-in for both languages
+        // Section fade-in for both languages (initial)
         [
           "profileSection",
           "experienceSection",
