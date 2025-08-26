@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
     :root {
-      --font-title: 'Ubuntu', Arial, sans-serif;
+      --font-title: 'Lexend Deca', Arial, sans-serif;
       --font-text: 'DM Sans', Arial, sans-serif;
     }
     body {
@@ -26,9 +26,7 @@
       max-width: 950px;
       margin: 0 auto;
       background: var(--container-bg, #1c1e26);
-      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
     .sidebar {
       background: var(--sidebar-bg);
@@ -154,12 +152,14 @@
       color: var(--main-text);
       margin-bottom: 2px;
       font-family: var(--font-text);
+      margin-bottom: 20px;
     }
     .exp-desc {
       font-size: 0.98rem;
       color: var(--main-text);
       margin-bottom: 2px;
       font-family: var(--font-text);
+      margin-bottom: 50px;
     }
     .skills-main {
       margin-bottom: 24px;
@@ -228,6 +228,9 @@
     }
     .link-button:hover {
       background: var(--accent-color);
+    }
+    #certificate-link-button{
+        margin-top: 40px;
     }
     @media (max-width: 900px) {
       .layout {
@@ -309,14 +312,37 @@
           <div class="sidebar-content">
             <div class="skill-list">
               <div class="skill-item" data-level="5">JavaScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="5">HTML <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="5">CSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="5">React JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="4">React Native <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="4">Redux <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">TypeScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="3">Node.js <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Next JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Gatsby JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="4">TypeScript <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Mongo DB <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Azure Cosmos DB <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="4">Node JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Docker <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">Strapi <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="3">WordPress <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">GraphQL <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="3">REST API <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Storybook <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">SCSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Tailwind CSS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Web Components <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Jest <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Cypress <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Swagger <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Astro <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="2">PHP <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
-              <div class="skill-item" data-level="1">Docker <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Pixi JS <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="3">Figma <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Adobe Photoshop <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Adobe Illustrator <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Adobe XD <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
+              <div class="skill-item" data-level="2">Adobe Animate <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
             </div>
           </div>
         </div>
@@ -330,11 +356,11 @@
       <main class="main">
         <div class="header-main">
           <div class="name">Hanif Bahari</div>
-          <div class="role">Fullstack MERN Developer</div>
+          <div class="role">Fullstack Web Developer <br> Web Designer</div>
         </div>
         <div class="profile" id="profileSection">
-          <div class="section-title">Profile</div>
-          <div>I specialize in web development, with a strong command of React JS, JavaScript, Redux, and TypeScript. My work involves creating dynamic, user-friendly web applications prioritizing functionality and aesthetics. My foundation in design complements my technical skills, allowing me to deliver holistic digital experiences.</div>
+          <div class="section-title">Summary</div>
+          <div>I am a Fullstack Web Developer and Web Designer with expertise in React, JavaScript, TypeScript, and Node.js. I build dynamic, scalable applications while ensuring they are visually engaging, responsive, and user-friendly. Skilled in both coding and design tools such as Figma, Photoshop, and Illustrator, I deliver end-to-end solutions that balance performance with modern UI/UX principles. My combined background in development and design enables me to create digital experiences that are technically robust and aesthetically refined.</div>
         </div>
         <div class="experience" id="experienceSection">
           <div class="section-title">Experience</div>
@@ -385,7 +411,7 @@
         </div>
         <div class="profile" style="margin-bottom:24px;" id="certificationSection">
           <div class="section-title">Certification</div>
-          <div>UX Design: From Concept to Wireframe - University of Michigan<br><a class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635">Certificate Link</a></div>
+          <div>UX Design: From Concept to Wireframe - University of Michigan<br><a id="certificate-link-button" class="link-button" href="https://courses.edx.org/certificates/2f0ec96f807b4a6191495517c6ea6635" target="_blank" rel="noopener noreferrer">Certificate Link</a></div>
         </div>
       </main>
     </div>
