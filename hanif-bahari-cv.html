@@ -902,9 +902,22 @@
         renderExperience(l);
         updateSidebar(l);
         // Fade-in animation for sections
-        var fadeIds = l === "en"
-          ? ["profileSection", "experienceSection", "skillsSection", "certificationSection", "educationSection"]
-          : ["profileSection-sv", "experienceSection-sv", "skillsSection", "certificationSection-sv", "educationSection-sv"];
+        var fadeIds =
+          l === "en"
+            ? [
+                "profileSection",
+                "experienceSection",
+                "skillsSection",
+                "certificationSection",
+                "educationSection",
+              ]
+            : [
+                "profileSection-sv",
+                "experienceSection-sv",
+                "skillsSection",
+                "certificationSection-sv",
+                "educationSection-sv",
+              ];
         fadeIds.forEach(function (id, i) {
           var el = document.getElementById(id);
           if (el) {
@@ -964,6 +977,101 @@
             var el = document.getElementById(id);
             if (el) el.classList.add("visible");
           }, 300 + i * 250);
+        });
+
+        // -------------------
+        // Keyboard navigation & focus management
+        // -------------------
+
+        // Sidebar section titles: arrow key navigation
+        var sidebarTitlesEls = Array.from(
+          document.querySelectorAll(".sidebar-title")
+        );
+        sidebarTitlesEls.forEach(function (el, idx) {
+          el.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowDown") {
+              e.preventDefault();
+              var next = sidebarTitlesEls[idx + 1];
+              if (next) next.focus();
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              var prev = sidebarTitlesEls[idx - 1];
+              if (prev) prev.focus();
+            }
+          });
+        });
+
+        // Skill items: arrow key navigation
+        function setupSkillItemNavigation() {
+          var skillItems = Array.from(document.querySelectorAll(".skill-item"));
+          skillItems.forEach(function (item, idx) {
+            item.addEventListener("keydown", function (e) {
+              if (e.key === "ArrowRight") {
+                e.preventDefault();
+                var next = skillItems[idx + 1];
+                if (next) next.focus();
+              } else if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                var prev = skillItems[idx - 1];
+                if (prev) prev.focus();
+              } else if (e.key === "ArrowDown") {
+                e.preventDefault();
+                var nextRow = skillItems[idx + 4];
+                if (nextRow) nextRow.focus();
+              } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                var prevRow = skillItems[idx - 4];
+                if (prevRow) prevRow.focus();
+              }
+            });
+          });
+        }
+        setupSkillItemNavigation();
+
+        // Re-setup skill item navigation after language toggle (skills may re-render)
+        var origSetLang = setLang;
+        setLang = function (l) {
+          origSetLang(l);
+          setTimeout(setupSkillItemNavigation, 400); // Wait for DOM update
+        };
+
+        // Focus management for toggles
+        var modeToggleBtn = document.getElementById("modeToggle");
+        modeToggleBtn.addEventListener("keydown", function (e) {
+          if (e.key === "Tab" && !e.shiftKey) {
+            // Move to lang toggle
+            e.preventDefault();
+            langToggleBtn.focus();
+          }
+        });
+        langToggleBtn.addEventListener("keydown", function (e) {
+          if (e.key === "Tab" && e.shiftKey) {
+            // Move to mode toggle
+            e.preventDefault();
+            modeToggleBtn.focus();
+          }
+        });
+
+        // Focus ring for mouse vs keyboard
+        document.body.addEventListener("mousedown", function () {
+          document.body.classList.add("using-mouse");
+        });
+        document.body.addEventListener("keydown", function (e) {
+          if (e.key === "Tab") {
+            document.body.classList.remove("using-mouse");
+          }
+        });
+
+        // All .link-button: Enter/Space triggers click
+        Array.from(document.querySelectorAll(".link-button")).forEach(function (
+          btn
+        ) {
+          btn.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+              e.preventDefault();
+              btn.click();
+            }
+          });
         });
       });
     </script>
