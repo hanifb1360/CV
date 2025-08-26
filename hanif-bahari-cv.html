@@ -8,9 +8,9 @@
   <style>
     body {
       font-family: 'Ubuntu', Arial, sans-serif;
-      background: var(--bg, #16171c);
+      background: var(--bg);
       margin: 0;
-      color: var(--text, #f8f9fa);
+      color: var(--text);
       min-height: 100vh;
       letter-spacing: 0.01em;
       transition: background 0.4s, color 0.4s;
@@ -26,22 +26,19 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
     .sidebar {
-      background: var(--sidebar-bg, #23263a);
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
       min-width: 320px;
       max-width: 320px;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      color: var(--sidebar-text, #fff);
+      flex: 0 0 320px;
       transition: background 0.4s, color 0.4s;
-      border-right: 2px solid #f7c948;
+      border-right: 2px solid var(--accent-color);
     }
     .profile-img {
       width: 100%;
       height: 220px;
       object-fit: cover;
-      border-bottom: 4px solid #f7c948;
+      border-bottom: 2px solid var(--accent-color);
     }
     .sidebar-section {
       padding: 24px 28px;
@@ -53,7 +50,7 @@
     .sidebar-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #f7c948;
+      color: var(--name-color);
       margin-bottom: 12px;
       letter-spacing: 0.04em;
       text-shadow: none;
@@ -61,27 +58,28 @@
     .sidebar-content {
       font-size: 1rem;
       line-height: 1.7;
-      color: #23263a;
+      color: var(--sidebar-text);
     }
     .sidebar-content a {
-      color: #f7c948;
+      color: var(--name-color);
       text-decoration: none;
       font-weight: 700;
-      background: #fffbe6;
+      background: var(--link-bg, #fffbe6);
       padding: 2px 6px;
       border-radius: 6px;
       transition: background 0.3s, color 0.3s;
     }
     .sidebar-content a:hover {
       text-decoration: underline;
-      background: #f7c948;
-      color: #23263a;
+      background: var(--name-color);
+      color: var(--sidebar-text);
     }
     .main {
-      flex: 1;
+      flex: 1 1 0%;
+      min-width: 0;
       padding: 40px 48px;
-      background: var(--main-bg, #16171c);
-      color: var(--main-text, #f8f9fa);
+      background: var(--main-bg);
+      color: var(--main-text);
       transition: background 0.4s, color 0.4s;
     }
     .header-main {
@@ -90,7 +88,7 @@
     .name {
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--name-color, #ffe066);
+      color: var(--accent-color);
       margin-bottom: 2px;
       letter-spacing: 0.03em;
       transition: color 0.4s;
@@ -98,7 +96,7 @@
     }
     .role {
       font-size: 1.1rem;
-      color: var(--role-color, #f8f9fa);
+      color: var(--role-color);
       font-weight: 500;
       margin-bottom: 18px;
       transition: color 0.4s;
@@ -106,21 +104,17 @@
     .section-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #ffe066;
+      color: var(--name-color);
       margin-bottom: 10px;
       letter-spacing: 0.04em;
-      border-bottom: 2px solid #ffe066;
+      border-bottom: 2px solid var(--name-color);
       display: inline-block;
       padding-bottom: 2px;
-      text-shadow: 0 1px 0 #23263a;
+      text-shadow: 0 1px 0 var(--sidebar-bg);
     }
     .profile {
-      background: var(--profile-bg, #23263a);
-      border-radius: 8px;
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      font-size: 1rem;
-      color: var(--profile-text, #f8f9fa);
+      background: var(--profile-bg);
+      color: var(--profile-text);
       transition: background 0.4s, color 0.4s;
       opacity: 0;
       transform: translateY(30px);
@@ -145,24 +139,24 @@
     }
     .exp-date {
       font-size: 0.98rem;
-      color: #ffe066;
+      color: var(--main-text);
       font-weight: 500;
       margin-bottom: 2px;
     }
     .exp-role {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #f8f9fa;
+      color: var(--main-text);
       margin-bottom: 2px;
     }
     .exp-company {
       font-size: 0.98rem;
-      color: #ffe066;
+      color: var(--main-text);
       margin-bottom: 2px;
     }
     .exp-desc {
       font-size: 0.98rem;
-      color: #f8f9fa;
+      color: var(--main-text);
       margin-bottom: 2px;
     }
     .skills-main {
@@ -185,7 +179,7 @@
       display: flex;
       align-items: center;
       font-size: 1rem;
-      color: #23263a;
+      color: var(--sidebar-text);
       font-weight: 700;
       min-width: 120px;
       text-shadow: none;
@@ -199,14 +193,14 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #fffbe6;
+      background: var(--dot-bg, #fffbe6);
       display: inline-block;
       transition: background 0.4s;
-      border: 2px solid #f7c948;
+      border: 2px solid var(--name-color);
     }
     .dot.active {
-      background: #f7c948;
-      border-color: #23263a;
+      background: var(--name-color);
+      border-color: var(--sidebar-text);
     }
     @media (max-width: 900px) {
       .layout {
@@ -216,8 +210,9 @@
       .sidebar {
         min-width: 100%;
         max-width: 100%;
+        flex: 1 1 100%;
         border-right: none;
-        border-bottom: 2px solid #ffe066;
+        border-bottom: 2px solid var(--accent-color);
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -229,26 +224,30 @@
     }
     :root.dark {
       --bg: #16171c;
+      --accent-color: #66c9ff; 
+      --second-accent-color: #f7c948; 
       --container-bg: #1c1e26;
       --text: #f8f9fa;
       --sidebar-bg: #23263a;
       --sidebar-text: #f8f9fa;
       --main-bg: #16171c;
       --main-text: #f8f9fa;
-      --name-color: #ffe066;
+      --name-color: #66c9ff;
       --role-color: #f8f9fa;
       --profile-bg: #23263a;
       --profile-text: #f8f9fa;
     }
     :root.light {
       --bg: #f4f4f4;
+      --accent-color: #0c5075; 
+      --second-accent-color: #39727d; 
       --container-bg: #fff;
       --text: #23263a;
       --sidebar-bg: #f0f0f0;
       --sidebar-text: #23263a;
       --main-bg: #fff;
       --main-text: #23263a;
-      --name-color: #23263a;
+      --name-color: #39727d;
       --role-color: #23263a;
       --profile-bg: #f0f0f0;
       --profile-text: #23263a;
@@ -258,7 +257,7 @@
 
 
   <body>
-    <button id="modeToggle" style="position:fixed;top:24px;right:24px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:#f7c948;color:#23263a;font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">Light Mode</button>
+    <button id="modeToggle" style="position:fixed;top:24px;right:24px;z-index:1000;padding:8px 18px;border-radius:16px;border:none;background:var(--second-accent-color);color:var(--bg);font-weight:700;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);">Light Mode</button>
     <div class="layout">
       <aside class="sidebar">
         <img src="https://res.cloudinary.com/djdczuhsv/image/upload/me_pni3mc.jpg" alt="Hanif Bahari" class="profile-img" />
@@ -305,7 +304,6 @@
         </div>
         <div class="experience" id="experienceSection">
           <div class="section-title">Experience</div>
-          <!-- ...existing experience items... -->
           <div class="exp-item">
             <div class="exp-date">2025 Jan - June</div>
             <div class="exp-role">Fullstack Developer</div>
