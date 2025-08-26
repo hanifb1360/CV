@@ -238,9 +238,42 @@
       .link-button:hover {
         background: var(--accent-color);
       }
-      #certificate-link-button {
-        margin-top: 40px;
+      /* BUTTONS */
+      #modeToggle,
+      #langToggle {
+        position: fixed;
+        z-index: 1000;
+        padding: 8px 18px;
+        border-radius: 16px;
+        border: none;
+        background: var(--second-accent-color);
+        color: var(--bg);
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
       }
+      #modeToggle {
+        top: 24px;
+        right: 24px;
+      }
+      #langToggle {
+        top: 24px;
+        right: 140px;
+      }
+      /* CONTACT ICONS */
+      .contact-icon {
+        margin-right: 8px;
+      }
+      .contact-row {
+        margin-top: 10px;
+      }
+      .contact-links {
+        margin-top: 10px;
+        display: flex;
+        gap: 12px;
+      }
+      /* CERTIFICATE BUTTONS */
+      #certificate-link-button,
       #certificate-link-button-sv {
         margin-top: 40px;
       }
@@ -303,39 +336,11 @@
   <body>
     <button
       id="modeToggle"
-      style="
-        position: fixed;
-        top: 24px;
-        right: 24px;
-        z-index: 1000;
-        padding: 8px 18px;
-        border-radius: 16px;
-        border: none;
-        background: var(--second-accent-color);
-        color: var(--bg);
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      "
     >
       Light Mode
     </button>
     <button
       id="langToggle"
-      style="
-        position: fixed;
-        top: 24px;
-        right: 140px;
-        z-index: 1000;
-        padding: 8px 18px;
-        border-radius: 16px;
-        border: none;
-        background: var(--second-accent-color);
-        color: var(--bg);
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-      "
     >
       SV
     </button>
@@ -350,18 +355,18 @@
           <div class="sidebar-title" id="sidebar-contact-title">Contact</div>
           <div class="sidebar-content">
             <div>
-              <i class="bi bi-telephone" style="margin-right: 8px"></i>076 576
+              <i class="bi bi-telephone contact-icon"></i>076 576
               01 86
             </div>
-            <div style="margin-top: 10px">
-              <i class="bi bi-envelope" style="margin-right: 8px"></i
+            <div class="contact-row">
+              <i class="bi bi-envelope contact-icon"></i
               >hanifbahari@gmail.com
             </div>
-            <div style="margin-top: 10px">
-              <i class="bi bi-geo-alt" style="margin-right: 8px"></i>Imatragatan
+            <div class="contact-row">
+              <i class="bi bi-geo-alt contact-icon"></i>Imatragatan
               252 Kista, Stockholm
             </div>
-            <div style="margin-top: 10px; display: flex; gap: 12px">
+            <div class="contact-links">
               <a
                 class="link-button"
                 href="https://www.linkedin.com/in/hanifbahari"
@@ -435,13 +440,13 @@
               <div>
                 2021 - 2023<br /><span>Frontend Development, Nackademin</span>
               </div>
-              <div style="margin-top: 10px">
+              <div class="contact-row">
                 2015 - 2017<br /><span
                   >MA, Industrial Design / Design For ALL, Mid Sweden
                   University</span
                 >
               </div>
-              <div style="margin-top: 10px">
+              <div class="contact-row">
                 2001 - 2007<br /><span
                   >BA, Industrial Design, Azad University (IAU)</span
                 >
@@ -498,12 +503,12 @@
               <div>
                 2021 - 2023<br /><span>Frontendutveckling, Nackademin</span>
               </div>
-              <div style="margin-top: 10px">
+              <div class="contact-row">
                 2015 - 2017<br /><span
                   >MA, Industridesign / Design For ALL, Mittuniversitetet</span
                 >
               </div>
-              <div style="margin-top: 10px">
+              <div class="contact-row">
                 2001 - 2007<br /><span
                   >BA, Industridesign, Azad University (IAU)</span
                 >
