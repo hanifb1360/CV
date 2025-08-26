@@ -202,17 +202,13 @@
       display: block;
       height: 6px;
       border-radius: 3px;
-      background: linear-gradient(90deg, #f7c948 0%, #66c9ff 60%, #48f7e3 100%), #f7c948;
-      box-shadow: 0 0 8px 2px #66c9ff88, 0 0 2px 1px #f7c94888;
-      border: 1px solid #66c9ff;
-      transition: width 0.7s cubic-bezier(.77,0,.18,1), box-shadow 0.4s;
+      background: linear-gradient(90deg, var(--accent-color) 0%, var(--third-accent-color) 100%);
+      transition: width 0.7s cubic-bezier(.77,0,.18,1);
       z-index: 1;
       width: 0;
       opacity: 1;
     }
-    .lightning-bar.visible {
-      box-shadow: 0 0 16px 4px #66c9ffcc, 0 0 4px 2px #f7c948cc;
-    }
+
     .link-button {
       display: inline-block;
       margin-top: 6px;
@@ -307,12 +303,7 @@
             </div>
           </div>
         </div>
-        <div class="sidebar-section">
-          <div class="sidebar-title">Languages</div>
-          <div class="sidebar-content">
-            <span>Persian</span>, <span>English</span>, <span>Swedish</span>
-          </div>
-        </div>
+        
         <div class="sidebar-section">
           <div class="sidebar-title">Skills</div>
           <div class="sidebar-content">
@@ -327,6 +318,12 @@
               <div class="skill-item" data-level="1">Docker <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
               <div class="skill-item" data-level="3">Figma <span class="skill-lightning"><span class="lightning-bar"></span></span></div>
             </div>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Languages</div>
+          <div class="sidebar-content">
+            <span>Persian</span>, <span>English</span>, <span>Swedish</span>
           </div>
         </div>
       </aside>
